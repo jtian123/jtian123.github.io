@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 group :jekyll_plugins do
+    gem "jekyll-paginate"
+    gem "jekyll-sitemap"
+    gem "jekyll-feed"
+    gem "jekyll-toc"
+    gem "jekyll-seo-tag"
     gem 'classifier-reborn'
     gem 'jekyll'
     gem 'jekyll-archives'
@@ -13,9 +18,7 @@ group :jekyll_plugins do
     gem 'jekyll-paginate-v2'
     gem 'jekyll-regex-replace'
     gem 'jekyll-scholar'
-    gem 'jekyll-sitemap'
     gem 'jekyll-tabs'
-    gem 'jekyll-toc'
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
     gem 'unicode_utils'
