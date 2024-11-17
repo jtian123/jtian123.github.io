@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
-ruby "3.0.0"
-gem "jekyll", "~> 4.2.0"
+ruby "3.3.5"
 group :jekyll_plugins do
     gem "jekyll-paginate"
     gem "jekyll-sitemap"
