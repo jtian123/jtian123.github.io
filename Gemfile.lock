@@ -54,34 +54,10 @@ GEM
     feedjira (3.2.3)
       loofah (>= 2.3.1, < 3)
       sax-machine (>= 1.0, < 2)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-aarch64-linux-musl)
-    ffi (1.17.0-arm-linux-gnu)
-    ffi (1.17.0-arm-linux-musl)
     ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86-linux-gnu)
-    ffi (1.17.0-x86-linux-musl)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
-    ffi (1.17.0-x86_64-linux-musl)
     forwardable-extended (2.6.0)
     gemoji (4.1.0)
-    google-protobuf (4.28.3)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.28.3-aarch64-linux)
-      bigdecimal
-      rake (>= 13)
     google-protobuf (4.28.3-arm64-darwin)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.28.3-x86-linux)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.28.3-x86_64-darwin)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.28.3-x86_64-linux)
       bigdecimal
       rake (>= 13)
     html-pipeline (2.14.3)
@@ -181,17 +157,7 @@ GEM
       bigdecimal (~> 3.1)
     namae (1.2.0)
       racc (~> 1.7)
-    nokogiri (1.16.7-aarch64-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.7-arm-linux)
-      racc (~> 1.4)
     nokogiri (1.16.7-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.7-x86-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.7-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -204,25 +170,7 @@ GEM
     rexml (3.3.9)
     rouge (4.5.1)
     safe_yaml (1.0.5)
-    sass-embedded (1.81.0-aarch64-linux-gnu)
-      google-protobuf (~> 4.28)
-    sass-embedded (1.81.0-aarch64-linux-musl)
-      google-protobuf (~> 4.28)
-    sass-embedded (1.81.0-arm-linux-gnueabihf)
-      google-protobuf (~> 4.28)
-    sass-embedded (1.81.0-arm-linux-musleabihf)
-      google-protobuf (~> 4.28)
     sass-embedded (1.81.0-arm64-darwin)
-      google-protobuf (~> 4.28)
-    sass-embedded (1.81.0-x86-linux-gnu)
-      google-protobuf (~> 4.28)
-    sass-embedded (1.81.0-x86-linux-musl)
-      google-protobuf (~> 4.28)
-    sass-embedded (1.81.0-x86_64-darwin)
-      google-protobuf (~> 4.28)
-    sass-embedded (1.81.0-x86_64-linux-gnu)
-      google-protobuf (~> 4.28)
-    sass-embedded (1.81.0-x86_64-linux-musl)
       google-protobuf (~> 4.28)
     sax-machine (1.3.2)
     securerandom (0.3.2)
@@ -238,22 +186,7 @@ GEM
     webrick (1.9.0)
 
 PLATFORMS
-  aarch64-linux
-  aarch64-linux-gnu
-  aarch64-linux-musl
-  arm-linux
-  arm-linux-gnu
-  arm-linux-gnueabihf
-  arm-linux-musl
-  arm-linux-musleabihf
-  arm64-darwin
-  x86-linux
-  x86-linux-gnu
-  x86-linux-musl
-  x86_64-darwin
-  x86_64-linux
-  x86_64-linux-gnu
-  x86_64-linux-musl
+  arm64-darwin-23
 
 DEPENDENCIES
   classifier-reborn
@@ -283,7 +216,7 @@ DEPENDENCIES
   webrick
 
 RUBY VERSION
-   ruby 3.3.5p100
+   ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.23
+   2.4.10

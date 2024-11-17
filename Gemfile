@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
-ruby "3.3.5"
+ruby "~> 3.2.0"
 group :jekyll_plugins do
     gem "jekyll-paginate"
     gem "jekyll-sitemap"
-    gem "jekyll-feed"
     gem "jekyll-toc"
     gem "jekyll-seo-tag"
     gem 'classifier-reborn'
