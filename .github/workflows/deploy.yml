@@ -6,55 +6,43 @@ on:
       - master
       - main
     paths:
-      - "assets/**"
-      - "**.bib"
-      - "**.html"
-      - "**.js"
-      - "**.liquid"
-      - "**/*.md"
-      - "**.yml"
-      - "Gemfile"
-      - "Gemfile.lock"
-      - "!.github/workflows/axe.yml"
-      - "!.github/workflows/broken-links.yml"
-      - "!.github/workflows/deploy-docker-tag.yml"
-      - "!.github/workflows/deploy-image.yml"
-      - "!.github/workflows/docker-slim.yml"
-      - "!.github/workflows/lighthouse-badger.yml"
-      - "!.github/workflows/prettier.yml"
-      - "!lighthouse_results/**"
-      - "!CONTRIBUTING.md"
-      - "!CUSTOMIZE.md"
-      - "!FAQ.md"
-      - "!INSTALL.md"
-      - "!README.md"
+      - 'assets/**'
+      - '**.bib'
+      - '**.html'
+      - '**.js'
+      - '**.liquid'
+      - '**/*.md'
+      - '**.yml'
+      - 'Gemfile'
+      - 'Gemfile.lock'
+      - '!.github/workflows/**'
+      - '!lighthouse_results/**'
+      - '!CONTRIBUTING.md'
+      - '!CUSTOMIZE.md'
+      - '!FAQ.md'
+      - '!INSTALL.md'
+      - '!README.md'
   pull_request:
     branches:
       - master
       - main
     paths:
-      - "assets/**"
-      - "**.bib"
-      - "**.html"
-      - "**.js"
-      - "**.liquid"
-      - "**/*.md"
-      - "**.yml"
-      - "Gemfile"
-      - "Gemfile.lock"
-      - "!.github/workflows/axe.yml"
-      - "!.github/workflows/broken-links.yml"
-      - "!.github/workflows/deploy-docker-tag.yml"
-      - "!.github/workflows/deploy-image.yml"
-      - "!.github/workflows/docker-slim.yml"
-      - "!.github/workflows/lighthouse-badger.yml"
-      - "!.github/workflows/prettier.yml"
-      - "!lighthouse_results/**"
-      - "!CONTRIBUTING.md"
-      - "!CUSTOMIZE.md"
-      - "!FAQ.md"
-      - "!INSTALL.md"
-      - "!README.md"
+      - 'assets/**'
+      - '**.bib'
+      - '**.html'
+      - '**.js'
+      - '**.liquid'
+      - '**/*.md'
+      - '**.yml'
+      - 'Gemfile'
+      - 'Gemfile.lock'
+      - '!.github/workflows/**'
+      - '!lighthouse_results/**'
+      - '!CONTRIBUTING.md'
+      - '!CUSTOMIZE.md'
+      - '!FAQ.md'
+      - '!INSTALL.md'
+      - '!README.md'
   workflow_dispatch:
 
 permissions:
@@ -62,37 +50,48 @@ permissions:
 
 jobs:
   deploy:
-    # available images: https://github.com/actions/runner-images#available-images
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
+        with:
+          submodules: true  # Ensure submodules are checked out if any
+
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3.5"
-          bundler-cache: true
+          ruby-version: '3.0.0'  # Update to match the theme's required Ruby version
+          bundler-cache: true    # Caches gems automatically
+
       - name: Setup Python 🐍
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
-          cache: "pip" # caching pip dependencies
+          python-version: '3.9'  # Use a stable Python version
+          cache: 'pip'           # Cache pip dependencies
+
       - name: Update _config.yml ⚙️
-        uses: fjogeleit/yaml-update-action@main
+        uses: fjogeleit/yaml-update-action@v1.1
         with:
-          commitChange: false
-          valueFile: "_config.yml"
-          propertyPath: "giscus.repo"
+          file: '_config.yml'
+          property-path: 'giscus.repo'
           value: ${{ github.repository }}
-      - name: Install and Build 🔧
+          commit-change: false
+
+      - name: Install Dependencies 🔧
         run: |
           pip3 install --upgrade nbconvert
-          export JEKYLL_ENV=production
-          bundle exec jekyll build
-      - name: Purge unused CSS 🧹
+          bundle install
+
+      - name: Build Site 🏗️
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build
+
+      - name: Purge Unused CSS 🧹
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
