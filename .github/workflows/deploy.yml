@@ -55,19 +55,19 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
         with:
-          submodules: true  # Ensure submodules are checked out if any
+          submodules: true
 
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.0'  # Update to match the theme's required Ruby version
-          bundler-cache: true    # Caches gems automatically
+          ruby-version: '3.0.0'
+          bundler-cache: true
 
       - name: Setup Python 🐍
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9'  # Use a stable Python version
-          cache: 'pip'           # Cache pip dependencies
+          python-version: '3.9'
+          cache: 'pip'
 
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@v1.1
@@ -94,6 +94,9 @@ jobs:
 
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: _site
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: _site
