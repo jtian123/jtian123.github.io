@@ -1,9 +1,9 @@
 ---
 layout: default
 permalink: /blog/
-title: blog
+title: learning
 nav: true
-nav_order: 1
+nav_order: 3
 pagination:
   enabled: true
   collection: posts
@@ -54,7 +54,7 @@ pagination:
       {% endfor %}
     </ul>
   </div>
-  {% endif %}
+{% endif %}
 
 {% assign featured_posts = site.posts | where: "featured", "true" %}
 {% if featured_posts.size > 0 %}
@@ -152,14 +152,15 @@ pagination:
           <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
 
           {% if tags != "" %}
-          &nbsp; &middot; &nbsp;
+            &nbsp; &middot; &nbsp;
             {% for tag in post.tags %}
-            <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
-              <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
+              <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
+                <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
+              </a>
               {% unless forloop.last %}
                 &nbsp;
               {% endunless %}
-              {% endfor %}
+            {% endfor %}
           {% endif %}
 
           {% if categories != "" %}

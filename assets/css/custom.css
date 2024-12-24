@@ -1,0 +1,108 @@
+/* assets/css/custom.css */
+
+/* Adjust the font size for the post title */
+.post-title {
+    font-size: 2.4rem; /* Adjust the value to your desired size */
+    font-weight: bold; /* Optional: change font weight */
+    color: #333333;    /* Optional: change text color */
+    line-height: 1.2;  /* Optional: adjust line height */
+    margin-top: 5px;  /* Optional: adjust spacing */
+  }
+/* Timeline styles */
+.timeline {
+    position: relative;
+    margin-top: 0;
+    padding-top: 0;
+    margin: 15px auto; /* Center horizontally */
+    padding: 0;
+    list-style: none;
+    max-width: 800px; /* Adjust as needed */
+  }
+  
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10%; 
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e9ecef;
+    transform: translateX(-50%); /* Center the line exactly */
+}
+  
+.timeline-item {
+    position: relative;
+    margin: 5px 0;
+    clear: both;
+    margin-top: 0;
+    padding-top: 0;
+}
+  
+.timeline-date {
+    width: 10%
+}
+
+.timeline-content {
+    width: 55%;
+}
+
+.timeline-date {
+    position: absolute;
+    text-align: right;
+    right: 95%; /* Slightly more than 50% to create space for the line */
+    top: 0;
+    font-weight: bold;
+    color: #00050a;
+}
+  
+/* Content on the right */
+.timeline-content {
+    position: relative;
+    left: 15%; /* Slightly more than 50% to create space for the line */
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #5b5b5c;
+    border-radius: 2px;
+}
+  
+.timeline-content h3 {
+    margin-top: 2px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Style for <p> */
+.timeline-content p {
+    font-size: 1rem; /* Smaller font size */
+    font-weight: normal; /* Regular weight */
+    line-height: 1.5; /* Spacing between lines */
+    color: #393939; /* Lighter color for contrast */
+}
+@media (max-width: 767px) {
+    .timeline {
+        margin: 5px; /* Adjust margins for small screens */
+        max-width: none; /* Allow full width */
+    }
+
+    .timeline::before {
+        left: 5px;
+        transform: none; /* Remove transform on small screens */
+    }
+
+    .timeline-date,
+    .timeline-content {
+        position: relative;
+        width: auto;
+        text-align: left;
+        left: 0;
+        right: 0;
+    }
+
+    .timeline-date {
+        margin-bottom: 5px;
+    }
+
+    .timeline-content {
+        padding: 5px;
+    }
+}
