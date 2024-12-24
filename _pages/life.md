@@ -32,6 +32,7 @@ I got the amazing chance to join the USC club basketball team while I was a grad
     On the left, that’s me, wearing number 4, warming up with a big smile on my face. To be honest, I can’t even remember what I was laughing at—it could have been a teammate’s joke or just the pure joy of being on the court. On the right, it’s a snapshot from our first game of the 2021 season, a highly anticipated matchup against the UCLA club basketball team. It was an unforgettable game where we brought our A-game and secured a victory.
 
     I was so thrilled after the win that I posted an Instagram story with the admittedly outrageous caption, “Destroy UCLA.” Looking back, it makes me laugh at how bold and brash I was in those moments. It’s a reminder of how youthful exuberance sometimes takes over in the heat of excitement. These days, I approach such moments with a bit more humility, but I still cherish the memories and lessons from those times.
+
 </div>
 
 ## Traveler and Photographer

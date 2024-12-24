@@ -24,7 +24,7 @@ Welcome to my personal website! Here you can get to know me more comprehensively
 
 **Passion**: I am also an avid traveler, passionate photographer, and enthusiastic basketball player! See more about my life on [life]({{'/life/' | relative_url}}).
 
-**Education Journey**: Three continents have been part of my scholastic career, which demonstrates my dedication to global viewpoints and lifelong learning. 
+**Education Journey**: Three continents have been part of my scholastic career, which demonstrates my dedication to global viewpoints and lifelong learning.
 {% raw %}
 
 <div style="clear: both;"></div>

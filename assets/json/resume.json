@@ -29,11 +29,13 @@
       "url": "https://keck.usc.edu/biostatistics/",
       "startDate": "2023-10-09",
       "summary": "",
-      "highlights": ["Spearheaded high-dimensional linear regression analysis to pinpoint brain structures impacted by traffic-related air pollution, employing causal inference techniques to substantiate findings.",
+      "highlights": [
+        "Spearheaded high-dimensional linear regression analysis to pinpoint brain structures impacted by traffic-related air pollution, employing causal inference techniques to substantiate findings.",
         "Engineered and launched the “MRIreduce” R package in Github, facilitating the transformation of NIfTI format T1/FL neuroimages into structured, high-dimensional data frames, with a focus on ROI-based data pipeline processing.",
         "Implemented and refined the Super-Partition algorithm for robust processing of genotype data across 22 chromosomes, showcasing ability to manage and analyze large-scale genomic datasets effectively.",
         "Designed user interface with R-Shiny for Cisplatin Induced Hearing Loss Prediction.",
-        "Enhanced computational efficiency by integrating cloud computing solutions via slurmR, significantly boosting data processing capabilities and proficiency in handling large-scale data analyses in high-performance computing environments."]
+        "Enhanced computational efficiency by integrating cloud computing solutions via slurmR, significantly boosting data processing capabilities and proficiency in handling large-scale data analyses in high-performance computing environments."
+      ]
     }
   ],
   "skills": [
@@ -54,26 +56,13 @@
       "name": "Machine Learning",
       "level": "Master",
       "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "XGBoost",
-        "SVM",
-        "Neural Networks (CNNs, RNNs)",
-        "AutoEncoder"
-      ]
+      "keywords": ["XGBoost", "SVM", "Neural Networks (CNNs, RNNs)", "AutoEncoder"]
     },
     {
       "name": "Programming language and tool",
       "level": "Master",
       "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "Python",
-        "R",
-        "SQL",
-        "Pytorch",
-        "Tableau",
-        "Spark",
-        "Rshiny"
-      ]
+      "keywords": ["Python", "R", "SQL", "Pytorch", "Tableau", "Spark", "Rshiny"]
     }
   ],
 
@@ -112,7 +101,7 @@
       "courses": ["Probability Theory", "Principles of Mathematical Analysis"]
     }
   ],
-  
+
   "languages": [
     {
       "language": "English",

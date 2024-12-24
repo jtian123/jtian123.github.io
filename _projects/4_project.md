@@ -1,12 +1,13 @@
 ---
 layout: page
-title: Large-Scale Data Analysis with Genetic Variants and Asthma Control 
+title: Large-Scale Data Analysis with Genetic Variants and Asthma Control
 description: A research project, funded by the National Institute of Health (NIH) and in collaboration with Boston Children’s Hospital
 img: assets/img/intro_gwas.png
 importance: 2
 category: work
 toc: false
 ---
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/NIH.png" title="NIH" class="img-fluid rounded z-depth-1" %}
@@ -35,9 +36,10 @@ The first model incorporates an interaction term to examine the combined effect 
 
 **Model Formula**:
 
-ACT ~ Covariates + AP + SNPs_reduced_feature + AP * SNPs_reduced_feature
+ACT ~ Covariates + AP + SNPs_reduced_feature + AP \* SNPs_reduced_feature
 
 **Analysis**:
+
 - The **`Anova`** function in R is used with the F-test to determine the significance of the interaction term (`AP * SNPs_reduced_feature`) in the model.
 
 **Model 2: Linear Regression without Interaction Term**
@@ -49,8 +51,8 @@ The second model excludes the interaction term to evaluate the main effects of a
 ACT(Asthma Control Score) ~ Covariates +AP + SNPs_reduced_feature
 
 **Analysis**:
-- The **`Anova`** function in R is used with the F-test to determine the significance of the SNPs_reduced_feature term in the model.
 
+- The **`Anova`** function in R is used with the F-test to determine the significance of the SNPs_reduced_feature term in the model.
 
 **Key Notes**:
 
@@ -61,7 +63,7 @@ ACT(Asthma Control Score) ~ Covariates +AP + SNPs_reduced_feature
 5. The F-test evaluates the significance of specific terms in each model:
    - **Model 1**: Focuses on the interaction term.
    - **Model 2**: Focuses on the main effect of SNPs_reduced_feature.
-<br><br>
+     <br><br>
 
 ## Multiple Testing Correction
 
@@ -76,15 +78,17 @@ A **Manhattan plot** is a type of scatter plot used to display the results of a 
 Features of a Manhattan Plot:
 
 1. **X-Axis**:
-    - Represents the genomic coordinates of SNPs, typically grouped and ordered by chromosome.
-    - Each chromosome is shown sequentially, often using alternating colors to differentiate them.
+
+   - Represents the genomic coordinates of SNPs, typically grouped and ordered by chromosome.
+   - Each chromosome is shown sequentially, often using alternating colors to differentiate them.
 
 2. **Y-Axis**:
-    - Represents the genomic coordinates of SNPs, typically grouped and ordered by chromosome.
-    - Each chromosome is shown sequentially, often using alternating colors to differentiate them.
+
+   - Represents the genomic coordinates of SNPs, typically grouped and ordered by chromosome.
+   - Each chromosome is shown sequentially, often using alternating colors to differentiate them.
 
 3. **Threshold Line**:
-    -A horizontal line indicates the genome-wide significance threshold, SNPs above this line are considered significant.
+   -A horizontal line indicates the genome-wide significance threshold, SNPs above this line are considered significant.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">

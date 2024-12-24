@@ -181,8 +181,6 @@ external_sources:
     posts:
       - url: https://www.deeplearning.ai/
         published_date: 2024-12-24
-  
-  
 
 # -----------------------------------------------------------------------------
 # Newsletter
@@ -293,9 +291,8 @@ defaults:
 sass:
   style: compressed
 
-
 # -----------------------------------------------------------------------------
-# Jekyll toc 
+# Jekyll toc
 # -----------------------------------------------------------------------------
 
 jekyll-toc:
@@ -329,7 +326,7 @@ jekyll-archives:
     tag: "/blog/tag/:name/"
     #category: "/blog/category/:name/"
 
-display_tags: ["Neural-Network","Machine-Learning", "Bitcoin", "Invest", "Ideas"]
+display_tags: ["Neural-Network", "Machine-Learning", "Bitcoin", "Invest", "Ideas"]
 #display_categories: ["external-services"] # these categories will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------
@@ -671,4 +668,3 @@ jsonresume:
   - languages
   - interests
   - references
-  

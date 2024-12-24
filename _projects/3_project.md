@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Statistical Analysis and Causal Inference of Air Pollutants and Impact on Alzheimer’s Disease in Women 
+title: Statistical Analysis and Causal Inference of Air Pollutants and Impact on Alzheimer’s Disease in Women
 description: A Study Supported by P01 Research Program Project Grants from National Institute on Aging
 img: assets/img/dementia.jpg
 importance: 1
@@ -22,50 +22,60 @@ Applied [MRIreduce](https://uscbiostats.github.io/MRIreduce/) package to convert
 The package contains an image processing pipeline:
 
 1. **Image Reorientation**
+
    - FSL's `fslreorient2std` function.
 
 2. **Bias Correction**
+
    - N4 inhomogeneity correction.
 
 3. **Brain Extraction**
+
    - FSL's Brain Extraction Tool.
 
 4. **Brain Volume Calculation**
+
    - **Tissue Segmentation**: Segmenting the extracted brain image into white matter, grey matter, and cerebrospinal fluid (CSF) using the `fast` function from FSL.
    - Count white matter (WM) and grey matter (GM) voxels.
    - Multiply by the volume per voxel to obtain the brain volume in cubic centimeters.
 
 5. **Image Registration**
+
    - The brain-extracted image is registered to the Eve brain template using FSL's `flirt` function. This aligns the individual brain image to a standard anatomical space for comparison and analysis.
 
 6. **Extraction of Intensity Data**
+
    - Extract intensity values from the registered image into a 3D matrix for further analysis.
 
 7. **Segmentation into White Matter, Grey Matter, and Cerebrospinal Fluid**
+
    - Create an integer array to classify each voxel as WM, GM, or CSF.
 
 8. **ROI Labeling Following Eve Template**
+
    - Identify 130 Regions of Interest (ROIs).
    - Format data into a 2D matrix: rows represent samples, columns represent features corresponding to ROI locations in the brain.
 
 9. **Super-Partition within ROIs**
+
    - **Clustering**: Create groups of data features based on their relationships measured by correlation.
 
 10. **Partition within Super-Partition**
+
     - **Data Reduction**: Apply a fast and flexible framework for agglomerative partitioning.
 
 11. **Calculation of Feature-Specific, Tissue-Specific Volumes within ROIs**
 
 12. **Calculation of Feature-Specific, Tissue-Specific Intensities within ROIs**
-    - Form four modules of data:
-        - Grey Matter Intensities
-        - Grey Matter Volumes
-        - White Matter Intensities
-        - White Matter Volumes
 
-13. **Quantile Normalization**
-    - Normalize across brain features within individual samples to account for MRI machine characteristics or settings that may differ between scans, reducing variability caused by different clinics or scanning times.
-<br><br>
+    - Form four modules of data:
+      - Grey Matter Intensities
+      - Grey Matter Volumes
+      - White Matter Intensities
+      - White Matter Volumes
+
+13. **Quantile Normalization** - Normalize across brain features within individual samples to account for MRI machine characteristics or settings that may differ between scans, reducing variability caused by different clinics or scanning times.
+    <br><br>
 
 ## Statistical Modeling
 
@@ -93,7 +103,7 @@ Then, $$P(Y \leq j)$$ is the cumulative probability of $$Y$$ less than or equal 
 
 $$\frac{P(Y \leq j)}{Y > j}$$
 
-The log odds  is also known as the logit, so that
+The log odds is also known as the logit, so that
 
 $$log\frac{P(Y \leq j)}{Y > j} = logit(P(Y \leq j))$$
 
@@ -107,8 +117,8 @@ $$logit(P(Y^*_1 \leq j)) = \alpha - \eta_0 W - \eta_1 X_c + \varepsilon$$
 
 where, $$Y^*_1$$ is the ordinal outcome of $$Y_1$$
 
-Reduced model $$M_0$$: 
-    
+Reduced model $$M_0$$:
+
 $$logit(P(Y^*_1 \leq j)) = \alpha - \eta_0 W + \varepsilon$$
 
 The likelihood ratio test statistic $$\Lambda$$ is given by:
@@ -116,6 +126,7 @@ The likelihood ratio test statistic $$\Lambda$$ is given by:
 $$\Lambda = -2 (\log L(M_0) - \log L(M_1))$$
 
 Where:
+
 - $$\log L(M_0)$$: Log-likelihood of the null model.
 - $$\log L(M_1)$$: Log-likelihood of the alternative model.
 
@@ -136,6 +147,7 @@ The likelihood ratio test statistic $$\Lambda$$ is given by:
 $$\Lambda = -2 (\log L(M_0) - \log L(M_1))$$
 
 Where:
+
 - $$\log L(M_0)$$: Log-likelihood of the null model.
 - $$\log L(M_1)$$: Log-likelihood of the alternative model.<br><br>
 
