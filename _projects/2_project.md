@@ -124,4 +124,4 @@ This project demonstrates how **machine learning** can transform complex scienti
   </div>
 </div>
 
-**Read more about the report from [download](<(/assets/docs/cern_pdf.pdf)>)**
+**Read more about the report from [download](<(/assets/pdf/cern_pdf.pdf)>)**
