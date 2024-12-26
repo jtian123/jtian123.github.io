@@ -5,7 +5,7 @@ permalink: /
 #subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 
 profile:
-  image: tjy_graduate.jpg
+  image: tjy_grad.png
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>Phone: +1 213-713-0880</p>
