@@ -1,7 +1,6 @@
 # -----------------------------------------------------------------------------
 # Site settings
 # -----------------------------------------------------------------------------
-
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Jinyao Tian
 middle_name:
@@ -181,12 +180,8 @@ external_sources:
     posts:
       - url: https://www.deeplearning.ai/
         published_date: 2024-12-24
-  -name: Hugging Face
-    posts: 
-      - url: https://huggingface.co/
-        published_date: 2024-12-25
-  -name: 
-    posts: 
+  - name:
+    posts:
       - url: https://www.ark-invest.com/
         published_date: 2024-12-25
 
