@@ -173,7 +173,7 @@ external_sources:
     posts:
       - url: https://github.com/karpathy/nn-zero-to-hero
         published_date: 2024-12-23
-  - name: Broken Money
+  - name: Broken Money- Bitcoin
     posts:
       - url: https://satoshifiles.substack.com/p/lyn-aldens-broken-money-the-best
         published_date: 2024-12-23
@@ -181,6 +181,14 @@ external_sources:
     posts:
       - url: https://www.deeplearning.ai/
         published_date: 2024-12-24
+  -name: Hugging Face
+    posts: 
+      - url: https://huggingface.co/
+        published_date: 2024-12-25
+  -name: 
+    posts: 
+      - url: https://www.ark-invest.com/
+        published_date: 2024-12-25
 
 # -----------------------------------------------------------------------------
 # Newsletter
