@@ -106,3 +106,9 @@
     padding: 5px;
   }
 }
+
+/* Adjust the font size for the projects content */
+.post article {
+  font-size: 1rem; /* Adjust the size as needed */
+  line-height: 1.4; /* Optional for better readability */
+}

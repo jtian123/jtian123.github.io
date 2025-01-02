@@ -74,8 +74,7 @@ The package contains an image processing pipeline:
       - White Matter Intensities
       - White Matter Volumes
 
-13. **Quantile Normalization** - Normalize across brain features within individual samples to account for MRI machine characteristics or settings that may differ between scans, reducing variability caused by different clinics or scanning times.
-    <br><br>
+13. **Quantile Normalization** - Normalize across brain features within individual samples to account for MRI machine characteristics or settings that may differ between scans, reducing variability caused by different clinics or scanning times.<br><br>
 
 ## Statistical Modeling
 
