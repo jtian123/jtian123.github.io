@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>James Tian</title>
-  <meta name="description" content="James Tian is a data scientist at the Keck School of Medicine of USC and the co-founder and AI engineer of Apateu. Statistics, AI engineering, and an autonomous delivery drone in progress with a high-school student.">
+  <meta name="description" content="James Tian is a data scientist at the Keck School of Medicine of USC and an AI engineer. He was the founding engineer of Apateu, built Moonlight for parents of children with autism, and is building an autonomous delivery drone with a high-school student.">
   <meta name="author" content="James Tian">
   <meta name="theme-color" content="#faf9f5">
   <meta property="og:type" content="website">
   <meta property="og:title" content="James Tian">
-  <meta property="og:description" content="Data scientist at the Keck School of Medicine of USC. Co-founder and AI engineer of Apateu. Los Angeles.">
+  <meta property="og:description" content="Data scientist at the Keck School of Medicine of USC. AI engineer: Apateu, Moonlight and an autonomous delivery drone. Los Angeles.">
   <meta property="og:url" content="https://jtian123.github.io/">
   <meta property="og:image" content="https://jtian123.github.io/assets/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -28,16 +28,18 @@
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
 
-  <header class="top wrap">
-    <a class="name" href="#main">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="26" cy="38" r="20" fill="#d97757"/><path d="M32 8 A24 24 0 0 1 56 32 L32 32 Z" fill="#141413"/></svg>
-      James Tian
-    </a>
-    <nav class="top-links" aria-label="Contact">
-      <a href="mailto:jamestian023@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/jamestian023/" rel="me">LinkedIn</a>
-      <a href="https://github.com/jtian123" rel="me">GitHub</a>
-    </nav>
+  <header class="site">
+    <div class="wrap top">
+      <a class="name" href="#main">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="26" cy="38" r="20" fill="#d97757"/><path d="M32 8 A24 24 0 0 1 56 32 L32 32 Z" fill="#141413"/></svg>
+        James Tian
+      </a>
+      <nav class="top-links" aria-label="Contact">
+        <a href="mailto:jamestian023@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/jamestian023/" rel="me">LinkedIn</a>
+        <a href="https://github.com/jtian123" rel="me">GitHub</a>
+      </nav>
+    </div>
   </header>
 
   <main id="main" class="wrap">
@@ -45,9 +47,8 @@
     <section class="intro" aria-label="About">
       <div>
         <h1 class="sr-only">About</h1>
-        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system, and the co-founder and AI engineer of <a href="https://www.westapt.com/agent">Apateu</a>, a student-housing marketplace and AI search engine. I’m also building an <a href="#drone">autonomous delivery drone</a> with an AI camera. I grew up in China and studied statistics at Southeast University (东南大学) in Nanjing, then mathematics at Utrecht University and analytics at USC.</p>
+        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system. I also build AI products: I was the founding engineer of <a href="https://www.app.westapt.com/">Apateu</a>, a student-housing marketplace and AI search engine, and I built <a href="#moonlight">Moonlight</a>, an iPhone app for parents of children with autism. With a high-school student I mentor, I’m building an <a href="#drone">autonomous delivery drone</a> that picks its own landing spot. I grew up in China and studied statistics at Southeast University (东南大学) in Nanjing, then mathematics at Utrecht University and analytics at USC.</p>
         <p>Most of my work is checking whether a result, a model or a machine is right enough to act on, and building the pipeline that makes it so.</p>
-        <p>Email: <a href="mailto:jamestian023@gmail.com">jamestian023@gmail.com</a>. I’m also on <a href="https://www.linkedin.com/in/jamestian023/">LinkedIn</a> and <a href="https://github.com/jtian123">GitHub</a>.</p>
       </div>
       <img class="portrait" src="assets/james-640.jpg" width="457" height="640" alt="James Tian" fetchpriority="high">
     </section>
@@ -65,19 +66,21 @@
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
-          <p>The questions are big and human. Does traffic pollution age the brain? What does childhood adversity write into DNA? Can a scan predict a hormone? The data is enormous and noisy, so most of my job is building the pipeline that makes an answer trustworthy before anyone reads it.</p>
-          <p>My main project follows air pollution into the brain. Working with about 1,600 MRI scans from older women in the Women’s Health Initiative Memory Study, I created and maintain <a href="https://github.com/USCbiostats/MRIreduce">MRIreduce</a>, an open-source R package on CRAN that turns raw brain images into structured features without a predefined atlas, building on my advisor’s Partition method. I then used high-dimensional causal mediation to ask which brain regions carry pollution’s effect on memory. I’m first author on the manuscript, now under revision.</p>
-          <ul>
-            <li>Harmonized eleven cohorts of blood samples from trauma and sepsis patients across three measurement platforms and found a 36-gene neutrophil signature that reproduced with 97.2% directional agreement (AAST 2026 abstract).</li>
-            <li>Built a deep-learning pipeline with explainability built in that predicts adolescent hormone levels from brain structure in about 9,100 ABCD Study participants (OHBM 2026 abstract).</li>
-            <li>Ran an epigenome-wide study of childhood maltreatment and DNA methylation: 453 young people, four timepoints, about 768,000 sites, kinship-adjusted mixed models on USC’s HPC cluster.</li>
-            <li>Built and deployed <a href="https://cihl.shinyapps.io/pedshear/">PedsHEAR</a>, a clinician-facing tool that estimates hearing-loss risk for children on cisplatin chemotherapy, around my advisor’s validated model.</li>
-          </ul>
-          <figure class="figure">
-            <a href="https://github.com/USCbiostats/MRIreduce"><img src="assets/mrireduce-card.jpg" width="1200" height="600" alt="GitHub repository card for USCbiostats/MRIreduce" loading="lazy"></a>
-            <figcaption>MRIreduce lives in the USC Biostatistics organization on GitHub and on CRAN.</figcaption>
-          </figure>
-          <p class="links"><a href="https://github.com/USCbiostats/MRIreduce">MRIreduce on GitHub</a><a href="https://cran.r-project.org/package=MRIreduce">MRIreduce on CRAN</a><a href="https://cihl.shinyapps.io/pedshear/">PedsHEAR</a></p>
+          <div class="prose">
+            <p>The questions are big and human. Does traffic pollution age the brain? What does childhood adversity write into DNA? Can a scan predict a hormone? The data is enormous and noisy, so most of my job is building the pipeline that makes an answer trustworthy before anyone reads it.</p>
+            <p>My main project follows air pollution into the brain. Working with about 1,600 MRI scans from older women in the Women’s Health Initiative Memory Study, I created and maintain <a href="https://github.com/USCbiostats/MRIreduce">MRIreduce</a>, an open-source R package on CRAN that turns raw brain images into structured features without a predefined atlas, building on my advisor’s Partition method. I then used high-dimensional causal mediation to ask which brain regions carry pollution’s effect on memory. I’m first author on the manuscript, now under revision.</p>
+            <ul>
+              <li>Harmonized eleven cohorts of blood samples from trauma and sepsis patients across three measurement platforms and found a 36-gene neutrophil signature that reproduced with 97.2% directional agreement (AAST 2026 abstract).</li>
+              <li>Built a deep-learning pipeline with explainability built in that predicts adolescent hormone levels from brain structure in about 9,100 ABCD Study participants (OHBM 2026 abstract).</li>
+              <li>Ran an epigenome-wide study of childhood maltreatment and DNA methylation: 453 young people, four timepoints, about 768,000 sites, kinship-adjusted mixed models on USC’s HPC cluster.</li>
+              <li>Built and deployed <a href="https://cihl.shinyapps.io/pedshear/">PedsHEAR</a>, a clinician-facing tool that estimates hearing-loss risk for children on cisplatin chemotherapy, around my advisor’s validated model.</li>
+            </ul>
+            <figure class="figure">
+              <a href="https://github.com/USCbiostats/MRIreduce"><img src="assets/mrireduce-card.jpg" width="1200" height="600" alt="GitHub repository card for USCbiostats/MRIreduce" loading="lazy"></a>
+              <figcaption>MRIreduce lives in the USC Biostatistics organization on GitHub and on CRAN.</figcaption>
+            </figure>
+            <p class="links"><a href="https://github.com/USCbiostats/MRIreduce">MRIreduce on GitHub</a><a href="https://cran.r-project.org/package=MRIreduce">MRIreduce on CRAN</a><a href="https://cihl.shinyapps.io/pedshear/">PedsHEAR</a></p>
+          </div>
         </div>
       </details>
     </section>
@@ -89,47 +92,52 @@
       <details class="item" id="apateu">
         <summary>
           <img class="thumb" src="assets/apateu.jpg" width="1040" height="1040" alt="Two full screens from the Apateu iPhone app: the sublease listings feed and the AI housing agent landing" loading="lazy">
-          <span class="txt"><strong class="t">Apateu</strong><span class="role">Co-founder &amp; AI engineer · with Danbi Jang · 2025 to present</span><span class="blurb">A student-housing app. Students sublease to each other with a lease signed in the app, and an AI agent answers “a 2-bed near USC under $1,400 for the summer” with specific buildings and their current listed prices.</span></span>
+          <span class="txt"><strong class="t">Apateu</strong><span class="role">Founding engineer · with Danbi Jang · 2025 to September 2026</span><span class="blurb">A student-housing app. Students sublease to each other with a lease signed in the app, and an AI agent answers “a 2-bed near USC under $1,400 for the summer” with specific buildings and their current listed prices.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
-          <p>It started with a problem Danbi and I both had: we tried to sublease our own apartments and it was miserable. A group chat, no listing, no contract, no way to know if the stranger on the other end was real. So we built one ourselves and launched it on the App Store in September 2025.</p>
-          <p>Under the search engine is an index I built: 353 operator-specific adapters that read prices straight from property managers’ own websites across 3,700+ buildings in five metros, converted to a price per bed, because that is how students rent. The agent is a tool-use loop on Claude’s API with 34 tools, and a grounding layer keeps an amenity only when the building’s own page states it. I own the whole stack, SwiftUI, Node and MongoDB, and I wrote most of the adapters by directing AI coding agents the way a lead runs a small team.</p>
-          <figure class="figure">
-            <div class="shots">
-              <a href="https://apps.apple.com/us/app/apateu/id6745530032"><img src="assets/apateu-1.jpg" width="600" height="1300" alt="Apateu listings feed: sublease cards with monthly prices in Seattle and Los Angeles" loading="lazy"></a>
-              <a href="https://apps.apple.com/us/app/apateu/id6745530032"><img src="assets/apateu-2.jpg" width="600" height="1300" alt="The AI housing agent home screen with the prompt box and campus tiles" loading="lazy"></a>
-              <a href="https://apps.apple.com/us/app/apateu/id6745530032"><img src="assets/apateu-3.jpg" width="600" height="1300" alt="Step 3 of the lease builder: deposit-refund and late-payment presets" loading="lazy"></a>
+          <figure class="bleed gallery-fig">
+            <div class="gallery" data-gallery="Apateu">
+              <a class="shot" href="assets/apateu-1.jpg" data-caption="The sublease feed: listings from students, priced per month."><img src="assets/apateu-1.jpg" width="600" height="1300" alt="Apateu listings feed: sublease cards with monthly prices in Seattle and Los Angeles" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/apateu-2.jpg" data-caption="The AI housing agent: one search across student subleases and the apartments Apateu indexes."><img src="assets/apateu-2.jpg" width="600" height="1300" alt="The AI housing agent home screen with the prompt box and campus tiles" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/apateu-3.jpg" data-caption="Step 3 of the lease builder: deposit-refund and late-payment terms, signed in the app."><img src="assets/apateu-3.jpg" width="600" height="1300" alt="Step 3 of the lease builder: deposit-refund and late-payment presets" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
             </div>
-            <figcaption>Screens from the iPhone app, captured July 2026: the sublease feed, the housing agent landing, and the lease builder.</figcaption>
+            <figcaption>Screens from the iPhone app, July 2026: the sublease feed, the housing agent and the lease builder. Click any screen to zoom in.</figcaption>
           </figure>
-          <ul>
-            <li>1,000+ registered students, doubled in six months.</li>
-            <li>Ten campus Instagram accounts run by AI agents we built, about 6,000 followers, nothing spent on ads.</li>
-            <li>Two founders, no employees. Numbers as of August 2026.</li>
-          </ul>
-          <p class="links"><a href="https://www.westapt.com/agent">The housing agent at westapt.com</a><a href="https://apps.apple.com/us/app/apateu/id6745530032">Apateu on the App Store</a></p>
+          <div class="prose">
+            <p>It started with a problem Danbi and I both had: we tried to sublease our own apartments and it was miserable. A group chat, no listing, no contract, no way to know if the stranger on the other end was real. So we built the app we wanted and launched it on the App Store in September 2025.</p>
+            <p>Under the search engine is an index I built: 353 operator-specific adapters that read prices straight from property managers’ own websites across 3,700+ buildings in five metros, converted to a price per bed, because that is how students rent. The agent is a tool-use loop on Claude’s API with 34 tools, and a grounding layer keeps an amenity only when the building’s own page states it. I owned the whole stack, SwiftUI, Node and MongoDB, and wrote most of the adapters by directing AI coding agents the way a lead runs a small team.</p>
+            <ul>
+              <li>1,000+ registered students, doubled in six months.</li>
+              <li>Ten campus Instagram accounts run by AI agents we built, about 6,000 followers, nothing spent on ads.</li>
+              <li>A two-person team with no employees. Numbers as of August 2026.</li>
+            </ul>
+            <p class="links"><a href="https://www.app.westapt.com/">Apateu on the web</a><a href="https://apps.apple.com/us/app/apateu/id6745530032">Apateu on the App Store</a></p>
+          </div>
         </div>
       </details>
 
       <details class="item" id="moonlight">
         <summary>
-          <img class="thumb" src="assets/moonlight.jpg" width="1040" height="1040" alt="Two full screens from the Moonlight iPhone app with demo data: the day’s Timeline and the daily Insights report" loading="lazy">
-          <span class="txt"><strong class="t">Moonlight</strong><span class="role">AI engineer / full-stack software engineer · San Diego · 2026</span><span class="blurb">An iPhone app for parents of children with autism. A parent records an observation with a photo or a voice note, and every morning the app reports what happened yesterday, what to watch, and which things tend to occur together.</span></span>
+          <img class="thumb" src="assets/moonlight.jpg" width="1040" height="1040" alt="Two real screens from the Moonlight iPhone app: a day’s Timeline and a week of sleep in Insights" loading="lazy">
+          <span class="txt"><strong class="t">Moonlight</strong><span class="role">AI engineer / full-stack software engineer · San Diego · 2026</span><span class="blurb">An iPhone app for parents of children with autism. A parent records an observation with a photo or a voice note, and the app turns weeks of records into charts a doctor can read: sleep, bowel health, therapy sessions and food, and which things tend to occur together.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
-          <p>Parents of a child who may not have the words to say how they feel keep track of a great deal, and are then asked to recall weeks of it at a short appointment. Moonlight is one place to record structured daily observations across built-in and custom categories, and it looks for patterns across them over weeks.</p>
-          <p>The rule I held to was that the language model may suggest a pattern, and must report the times it did not hold, but every number in a report comes from a database counter, never from the model. The app gives no medical advice: if the model drafts a line that reads like a treatment change, code replaces it with a fixed instruction to keep recording and consult a doctor. Names are redacted before every prompt, and the whole app works in Chinese and English.</p>
-          <p>I built it end to end: requirements gathered from parents with no technical background, a proposal they approved, weekly check-ins, one storage design reversed when their security checklist made a server necessary, and version one in production in August 2026 after a four-week build. SwiftUI, Swift Charts, Node, MongoDB, OpenAI and AWS.</p>
-          <figure class="figure">
-            <div class="shots">
-              <img src="assets/moonlight-1.jpg" width="600" height="1304" alt="Timeline for one day: sleep, breakfast, mood and a snack, each with a note, and an add-record button" loading="lazy">
-              <img src="assets/moonlight-2.jpg" width="600" height="1304" alt="Insights: yesterday’s daily report with sleep, food and mood tiles, the day at a glance, a food estimate and AI observations" loading="lazy">
-              <img src="assets/moonlight-3.jpg" width="600" height="1304" alt="Log Sleep: a photo area, bedtime and wake-up pickers, night wakings and a note field" loading="lazy">
+          <figure class="bleed gallery-fig">
+            <div class="gallery" data-gallery="Moonlight">
+              <a class="shot" href="assets/moonlight-1.jpg" data-caption="Timeline for one day. Under the teacher’s note, the AI line lists what it read from the photo and flags anything worth watching. Place names and the photo are blurred."><img src="assets/moonlight-1-sm.jpg" width="720" height="1561" alt="Moonlight Timeline for September 22: a teacher’s note with an AI summary, two bathroom records, and a night’s sleep" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/moonlight-2.jpg" data-caption="Insights for a week: bowel movements on the Bristol scale against the ideal 3–4 band, and intervention sessions with the day’s average rating."><img src="assets/moonlight-2-sm.jpg" width="720" height="1561" alt="Moonlight Insights for September 6 to 12: a Bristol stool type chart and an intervention sessions chart" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/moonlight-3.jpg" data-caption="Sleep for the same week: bedtime, sleep onset and waking each night, and hours asleep against an 8–10 hour goal."><img src="assets/moonlight-3-sm.jpg" width="720" height="1561" alt="Moonlight Insights sleep section: a sleep rhythm chart and hours asleep per day for September 6 to 12" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
             </div>
-            <figcaption>Screens from the current build of the iPhone app, running on a demo family with fictional data: the day’s timeline, the daily report, and logging a night’s sleep.</figcaption>
+            <figcaption>Real screens from the app in use, September 2026, with place names and a photographed note blurred. Click any screen to zoom in.</figcaption>
           </figure>
+          <div class="prose">
+            <p>Parents of a child who may not have the words to say how they feel keep track of a great deal, and are then asked to recall weeks of it at a short appointment. Moonlight is one place to record structured daily observations across built-in and custom categories, and it looks for patterns across them over weeks.</p>
+            <p>The rule I held to was that the language model may suggest a pattern, and must report the times it did not hold, but every number in a report comes from a database counter, never from the model. The app gives no medical advice: if the model drafts a line that reads like a treatment change, code replaces it with a fixed instruction to keep recording and consult a doctor. Names are redacted before every prompt, and the whole app works in Chinese and English.</p>
+            <p>Since launch the app has changed in weekly rounds driven by the family. The latest reworked Insights: any date range now reads as sections a clinician would recognize, with sleep, bowel health on the Bristol scale, intervention sessions and nutrition, every chart computed from the records, and the whole report exports to a PDF for the next appointment.</p>
+            <p>I built it end to end: requirements gathered from parents with no technical background, a proposal they approved, weekly check-ins, one storage design reversed when their security checklist made a server necessary, and version one in production in August 2026 after a four-week build. SwiftUI, Swift Charts, Node, MongoDB, OpenAI and AWS.</p>
+          </div>
         </div>
       </details>
     </section>
@@ -140,24 +148,80 @@
 
       <details class="item" id="drone">
         <summary>
-          <img class="thumb" src="assets/drone.jpg" width="1040" height="1040" alt="3D model of the Holybro X650 V2 delivery drone with a Raspberry Pi AI camera and a package bay" loading="lazy">
-          <span class="txt"><strong class="t">An autonomous delivery drone</strong><span class="role">Mentor and autonomy engineer · with a high-school student in San Diego · summer 2026 to present</span><span class="blurb">A drone that carries a one-kilogram package from A to B and finds its landing marker with an AI camera, built together with a high-school student I mentor. Everything has flown in simulation so far; the parts are on order.</span></span>
+          <img class="thumb" src="assets/drone.jpg" width="1040" height="1040" alt="3D model of the X650 delivery drone hovering over paving, its camera footprint tinted in SafeLand’s colours and lidar returns scattered around it" loading="lazy">
+          <span class="txt"><strong class="t">An autonomous delivery drone</strong><span class="role">Mentor and autonomy engineer · with a high-school student in San Diego · summer 2026 to present</span><span class="blurb">A drone that carries a one-kilogram package to a delivery area, inspects the ground with an AI camera and two 3D lidars, and chooses where to land, or declines when the evidence is not good enough. No landing marker needed. Built with a high-school student I mentor; so far it flies only in simulation.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
-          <figure class="figure">
-            <div class="viewer" id="drone-viewer" style="background-image:url(assets/drone-poster.jpg)">
-              <canvas role="img" tabindex="0" aria-label="To-scale 3D model of the X650 delivery drone. Drag or use the arrow keys to rotate; scroll or press plus and minus to zoom.">A to-scale model of the X650 delivery drone: four arms with 15-inch propellers, a lidar on a mast, a camera at the nose and a package in a bay below.</canvas>
-              <div class="hud">Drag or arrow keys to rotate · scroll or + / − to zoom</div>
+          <figure class="bleed stage-fig">
+            <div class="stage" id="drone-viewer" style="background-image:url(assets/drone-stage.jpg)">
+              <canvas role="img" tabindex="0" aria-label="Interactive to-scale 3D model of the X650 delivery drone hovering over paving while it inspects the ground. Drag or use the arrow keys to orbit; hold Command or Control and scroll, or press plus and minus, to zoom.">A to-scale model of the X650 delivery drone hovering over paved ground, with its camera footprint, lidar returns and a candidate landing area.</canvas>
+              <div class="stage-ui">
+                <p class="stage-tag">Live 3D model<span class="stage-hint"><span class="h-mouse"> · drag to orbit, ⌘/Ctrl + scroll to zoom</span><span class="h-touch"> · drag sideways to orbit</span></span></p>
+                <div class="stage-btns">
+                  <button type="button" data-act="sensors" aria-pressed="true">Sensors</button>
+                  <button type="button" data-act="rotors" aria-pressed="true">Rotors</button>
+                  <button type="button" data-act="reset" aria-label="Reset view"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 8a4.8 4.8 0 1 0 1.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 2.2v3.1h3.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+                <ul class="stage-legend" aria-label="Legend">
+                  <li><i class="sw" style="--c:#a45aa4"></i>Camera footprint, labelled road</li>
+                  <li><i class="sw" style="--c:#e3cf2c"></i>Obstacle</li>
+                  <li><i class="dot"></i>Lidar returns</li>
+                  <li><i class="beam"></i>Downward beam</li>
+                  <li><i class="blind"></i>Lidar blind spot</li>
+                  <li><i class="site"></i>Candidate landing area</li>
+                </ul>
+                <p class="stage-toast" aria-hidden="true">Hold ⌘ or Ctrl to zoom</p>
+              </div>
             </div>
-            <figcaption>The aircraft as we will build it, drawn to scale in metres from the parts list: Holybro X650 V2 frame with 15-inch props, Pixhawk 6C Mini, Raspberry Pi 5 with the AI Camera on a tilt gimbal at the nose, RPLIDAR C1 on the mast, a downward lidar, and a one-kilogram package in a printed bay.</figcaption>
+            <figcaption>The aircraft as we will build it, drawn to scale in metres from the parts list: Holybro X650 V2 with 15-inch props, Pixhawk 6C Mini, Raspberry Pi 5, the Raspberry Pi AI Camera (IMX500) on a tilt gimbal at the nose, a Livox Mid-360S lidar under the nose and another on the mast, single-beam rangefinders pointing down and up, and a one-kilogram package. The sensor effects illustrate how inspection works; they are not recorded data.</figcaption>
           </figure>
-          <p>The design splits the brain in two. ArduPilot on the Pixhawk stays the pilot: stabilization, GPS, failsafes, geofence and the human’s override switch. A reinforcement-learning navigator on the Raspberry Pi decides where to go and where to look, reading a spinning lidar for obstacles, the AI camera for the landing marker, and the autopilot’s own state twenty times a second. It will be trained on thousands of simulated drones in NVIDIA Isaac Lab and must pass in ArduPilot’s own simulator before it touches the aircraft.</p>
-          <p>So far it has all flown in simulation, on purpose. Our first flight code carried a 2.7 km route over a virtual Mission Bay on three simulated airframes without changing a line. A browser dashboard streams live telemetry and lets you redraw the route on a map, and a fault lab kills a motor, jams the GPS and fakes a dying battery to see what the autopilot does. The student now decides what the delivery demo needs and which layer of the system should own it, which is the part I find most meaningful.</p>
-          <ul>
-            <li>650 mm airframe, 15-inch propellers, 6.3 kg maximum takeoff weight; the X500 we first considered had 280 g of margin left once the AI payload was aboard.</li>
-            <li>One-kilogram package, released by a servo latch over a marker the camera finds.</li>
-          </ul>
+
+          <div class="prose">
+            <h4>The mission</h4>
+            <p>The first version flew to a printed landing marker. In September we dropped the marker. Now the drone flies to an allowed delivery area, inspects the ground and picks a spot that is firm, level, clear of people and big enough for the aircraft, then keeps checking it all the way down. If it cannot establish one, it declines and flies back. Clear-looking ground is not proof of a safe landing, so missing or stale evidence counts as unknown, never as clear.</p>
+            <p>The design splits the brain in two. ArduPilot on the Pixhawk stays the pilot: stabilization, GPS, failsafes, geofence and the human’s override switch. The Raspberry Pi decides where to look and where to go, and sends navigation commands through the autopilot; it never drives the motors directly.</p>
+
+            <h4>Choosing the camera and the model</h4>
+            <p>The camera is the Raspberry Pi AI Camera, whose Sony IMX500 sensor runs a small neural network on the chip itself. The student already has a person detector running on it, and we kept it. To understand the ground we tested pretrained segmentation models instead of training our own. A street-scene model was the first baseline; we chose <a href="https://github.com/markus-42/SafeLand">SafeLand</a>, a SegFormer model trained on aerial images that labels 23 classes, including road, grass, water, obstacles and people.</p>
+            <p>SafeLand has 47 million parameters, which needs about 47 MB even at 8-bit precision, and the IMX500 has roughly 8 MB for its model. So SafeLand runs on the Pi’s CPU instead: loaded and warmed before takeoff, idle during cruise, and running only while the drone searches, approaches and descends.</p>
+          </div>
+
+          <figure class="bleed-md compare-fig" data-compare>
+            <div class="compare-tabs" role="tablist" aria-label="Simulated scene">
+              <button type="button" role="tab" aria-selected="true" data-rgb="assets/safeland-obstacles-rgb.jpg" data-lab="assets/safeland-obstacles-labels.jpg" data-cap="Three boxes, 12 to 45 cm tall, on level paving. SafeLand marks them as obstacles (yellow) and the paving as road (purple).">Obstacles</button>
+              <button type="button" role="tab" aria-selected="false" data-rgb="assets/safeland-person-rgb.jpg" data-lab="assets/safeland-person-labels.jpg" data-cap="A person walks into the landing area. SafeLand marks them in magenta, and the inspection holds while anyone is in view.">A person walks in</button>
+              <button type="button" role="tab" aria-selected="false" data-rgb="assets/safeland-step-rgb.jpg" data-lab="assets/safeland-step-labels.jpg" data-cap="A 25 cm step through the paving. SafeLand calls half of it water: it judges appearance, not height. This is why the lidars, not the camera, decide whether ground is level.">A 25 cm step</button>
+            </div>
+            <div class="compare" style="--pos:50%">
+              <img class="c-a" src="assets/safeland-obstacles-rgb.jpg" width="640" height="480" alt="Rendered camera frame from the simulator" loading="lazy">
+              <img class="c-b" src="assets/safeland-obstacles-labels.jpg" width="640" height="480" alt="The same frame with SafeLand’s labels blended over it" loading="lazy">
+              <span class="c-line" aria-hidden="true"><span class="c-knob"></span></span>
+              <span class="c-tag c-tag-a" aria-hidden="true">What the camera sees</span>
+              <span class="c-tag c-tag-b" aria-hidden="true">What SafeLand labels</span>
+              <input class="c-range" type="range" min="0" max="100" value="50" step="0.5" aria-label="Slide to compare the camera frame with SafeLand’s labels">
+              <button class="c-zoom" type="button" aria-label="Open both images full screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5 9 7M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <ul class="compare-legend" aria-label="SafeLand label colours">
+              <li><i style="--c:#a667a9"></i>Road</li>
+              <li><i style="--c:#e3e25e"></i>Obstacle</li>
+              <li><i style="--c:#e670e8"></i>Person</li>
+              <li><i style="--c:#6667e8"></i>Water</li>
+            </ul>
+            <figcaption><span class="c-cap">Three boxes, 12 to 45 cm tall, on level paving. SafeLand marks them as obstacles (yellow) and the paving as road (purple).</span> Frames rendered in NVIDIA Isaac Sim and labelled by the released SafeLand model, September 22, 2026. Drag the handle to compare.</figcaption>
+          </figure>
+
+          <div class="prose">
+            <h4>How it will learn</h4>
+            <p>Training is simulation-first. In NVIDIA Isaac Lab, every rendered camera frame passes through the same frozen SafeLand model the Pi will run, with a modelled delay standing in for the Pi’s, so the navigator learns from late, imperfect predictions rather than the simulator’s perfect labels. At each step it reads 2,906 numbers: SafeLand’s class probabilities on an 8 × 8 grid over the image, lidar ranges with flags for where nothing came back, a short memory of measured ground heights, and the aircraft’s own state and battery.</p>
+            <p>A scripted controller comes first, so the landing rules can be checked by hand. Only after the simulator passes those checks does PPO, a reinforcement-learning method, learn the approach, with the vision weights held fixed. On September 22 the inspection loop (rendered camera, SafeLand, lidar and a scripted controller) ran on six test scenes, with one and then four simulated cameras at once. No learning has started yet, on purpose.</p>
+            <p>Before any of this, our first flight code carried a 2.7 km route over a virtual Mission Bay on three simulated airframes, and a fault lab killed a motor, jammed the GPS and faked a dying battery to see what the autopilot would do. The student now decides what the delivery demo needs and which layer of the system should own it, which is the part I find most meaningful.</p>
+            <ul>
+              <li>Holybro X650 V2 airframe with 15-inch propellers; a one-kilogram package released by a servo latch, only after a verified landing.</li>
+              <li>Two Livox Mid-360S lidars, one upside down under the nose and one upright on the mast, together cover 52° above and below the horizon all the way around. Directly beneath the drone is a blind spot, so the plan is to map the ground ahead during the approach and keep tracking it on the way down; the single downward beam only checks height.</li>
+              <li>The Pi and the AI Camera already run on the bench; the airframe and lidars are not built yet.</li>
+            </ul>
+          </div>
         </div>
       </details>
     </section>
@@ -178,11 +242,8 @@
       <li><span class="y">2025</span><span>HDCIT: a high-dimensional causal inference test for single exposure, multiple mediators and single outcome.<span class="meta">Manuscript · co-author</span></span></li>
     </ul>
 
-    <h2 id="elsewhere">Elsewhere</h2>
-    <p>GitHub: <a href="https://github.com/jtian123">jtian123</a>. LinkedIn: <a href="https://www.linkedin.com/in/jamestian023/">jamestian023</a>. Apateu: <a href="https://www.westapt.com/agent">westapt.com/agent</a>. Email: <a href="mailto:jamestian023@gmail.com">jamestian023@gmail.com</a>.</p>
-
     <footer>
-      <p>Photo of Keck Hospital of USC by Patrick Davison, via <a href="https://en.wikipedia.org/wiki/File:USCUH.jpg">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, cropped. App screenshots show demo data. The drone is a to-scale 3D model built from the project’s parts list, not a photograph.</p>
+      <p>Photo of Keck Hospital of USC by Patrick Davison, via <a href="https://en.wikipedia.org/wiki/File:USCUH.jpg">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, cropped. Moonlight screens are real, with place names and a photo blurred. The drone is a to-scale 3D model built from the project’s parts list, not a photograph. Simulator frames are labelled by <a href="https://github.com/markus-42/SafeLand">SafeLand</a> (CC BY-NC-SA 4.0).</p>
       <p>© 2026 James Tian</p>
     </footer>
   </main>
