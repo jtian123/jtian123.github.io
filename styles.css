@@ -744,18 +744,11 @@ figcaption {
   background: #e8542f;
 }
 
-.stage-legend .blind {
-  width: 12px;
-  height: 12px;
-  border: 1.5px dashed #4a4540;
-  border-radius: 50%;
-}
-
-.stage-legend .site {
-  width: 11px;
+.stage-legend .grad {
+  width: 22px;
   height: 11px;
-  border: 2px solid #2f9e62;
-  border-radius: 2px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #d97757, #e0a458, #4d7a9a);
 }
 
 .stage.sensors-off .stage-legend {

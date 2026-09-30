@@ -1,20 +1,24 @@
 /* Autonomous delivery drone · three.js r128
-   The aircraft is drawn to scale in metres from the build's parts list and the
-   current design (the project design document, September 22, 2026): Holybro X650 V2
-   with 15-inch props, Pixhawk 6C Mini, Raspberry Pi 5, the Raspberry Pi AI
-   Camera (IMX500) on a tilt gimbal at the nose, a Livox Mid-360S inverted under
-   the nose and a second one upright on a mast, TFS20-L rangefinders pointing
-   down and up, a 6S LiPo and a 1 kg package.
+   The aircraft is drawn to scale in metres from the build's parts list and its
+   current design (September 2026): Holybro X650 V2 with 15-inch props, Pixhawk
+   6C Mini, Raspberry Pi 5, a Unitree L2 lidar hanging dome-down under the nose
+   (21.5 cm ahead of the frame centre), the Raspberry Pi AI Camera (IMX500) on a
+   pitch gimbal at the tip of a nose boom 12 cm further ahead, Benewake TFS20-L
+   single beams pointing down and up, a 6S LiPo and a 1 kg package.
 
-   Around it, an illustration of landing-site inspection: the camera's footprint
-   tinted in SafeLand's class colours (road purple, obstacle yellow), lidar
-   returns from the nose unit (note the blind patch straight below), the
-   downward beam, and a candidate landing area. None of it is recorded data. */
+   Around it, an illustration of what the flight pilot reads: the camera's
+   depth grid (12 x 16 cells, tinted near to far), lidar returns from the L2's
+   window (straight down to 6 degrees above horizontal, all around, minus what
+   the airframe blocks), and both beams. The course is shrunk to fit the stage.
+   None of it is recorded data. */
 (function () {
   'use strict';
 
-  var SAFE_ROAD = [128 / 255, 0, 128 / 255];
-  var SAFE_OBST = [1, 1, 0];
+  // the camera depth grid, near to far: clay, ochre, slate
+  var DEPTH_NEAR = [0.851, 0.467, 0.341];
+  var DEPTH_MID = [0.878, 0.643, 0.345];
+  var DEPTH_FAR = [0.302, 0.478, 0.604];
+
 
   function carbonTexture(T) {
     var c = document.createElement('canvas');
@@ -127,10 +131,10 @@
 
     var scene = new T.Scene();
     scene.background = new T.Color(BG);
-    scene.fog = new T.Fog(BG, 4.5, 11);
+    scene.fog = new T.Fog(BG, 7, 16);
     scene.environment = studioEnvironment(T, renderer);
 
-    var camera = new T.PerspectiveCamera(30, 16 / 9, 0.05, 40);
+    var camera = new T.PerspectiveCamera(30, 16 / 9, 0.05, 60);
 
     // ---- materials
     var carbonTex = carbonTexture(T);
@@ -157,11 +161,14 @@
       label: std({ color: 0xe6b84a, roughness: 0.6, metalness: 0.0 }),
       white: std({ color: 0xe9e7e0, roughness: 0.5, metalness: 0.0 }),
       foam: std({ color: 0x2a2a2a, roughness: 1.0, metalness: 0.0 }),
-      livox: std({ color: 0x2b2d31, roughness: 0.42, metalness: 0.55 }),
-      livoxCap: std({ color: 0x3a3d42, roughness: 0.35, metalness: 0.6 }),
+      l2: std({ color: 0x24262a, roughness: 0.42, metalness: 0.55 }),
+      dome: std({ color: 0x0c0d10, roughness: 0.08, metalness: 0.35 }),
       tfs: std({ color: 0x1d2a3a, roughness: 0.5, metalness: 0.3 }),
       led: std({ color: 0xff7a1a, emissive: 0xff6a00, emissiveIntensity: 0.9, roughness: 0.4 }),
-      box: std({ color: 0xd9b98c, roughness: 0.9, metalness: 0.0 })
+      post: std({ color: 0x8d8a84, roughness: 0.75, metalness: 0.15 }),
+      bark: std({ color: 0x6b5443, roughness: 0.95, metalness: 0.0 }),
+      leaf: std({ color: 0x6f8a55, roughness: 0.9, metalness: 0.0, flatShading: true }),
+      wall: std({ color: 0xd8d0c2, roughness: 0.92, metalness: 0.0 })
     };
     Object.keys(mat).forEach(function (k) { mat[k].envMapIntensity = 0.7; });
 
@@ -290,21 +297,16 @@
       });
     });
 
-    // payload rails (2 x Ø10 mm, 320 mm) and the package bay
-    [1, -1].forEach(function (s) {
-      cyl(0.005, 0.32, mat.tube, 0, -0.05, s * 0.055, ac, 20).rotation.z = Math.PI / 2;
-      [1, -1].forEach(function (sx) { box(0.018, 0.03, 0.016, mat.plastic, sx * 0.07, -0.036, s * 0.055, ac); });
-    });
+    // package bay: 20 x 15 x 12 cm under the bottom plate, on two latch rails
+    [1, -1].forEach(function (s) { box(0.21, 0.008, 0.012, mat.alu, 0, -0.026, s * 0.06, ac); });
     [1, -1].forEach(function (sx) {
-      box(0.018, 0.006, 0.16, mat.petg, sx * 0.07, -0.178, 0, ac);
-      [1, -1].forEach(function (s) {
-        box(0.018, 0.13, 0.006, mat.petg, sx * 0.07, -0.115, s * 0.077, ac);
-        box(0.018, 0.008, 0.022, mat.petg, sx * 0.07, -0.054, s * 0.055, ac);
-      });
+      box(0.018, 0.006, 0.16, mat.petg, sx * 0.07, -0.148, 0, ac);
+      [1, -1].forEach(function (s) { box(0.018, 0.12, 0.006, mat.petg, sx * 0.07, -0.088, s * 0.078, ac); });
     });
-    box(0.023, 0.012, 0.023, mat.plastic, 0.0, -0.06, 0.084, ac);
-    box(0.20, 0.12, 0.15, mat.kraft, 0, -0.115, 0, ac);
-    box(0.202, 0.122, 0.05, mat.tape, 0, -0.115, 0, ac);
+    box(0.023, 0.012, 0.023, mat.plastic, 0.0, -0.036, 0.084, ac);
+    box(0.20, 0.12, 0.15, mat.kraft, 0, -0.085, 0, ac);
+    box(0.202, 0.122, 0.05, mat.tape, 0, -0.085, 0, ac);
+
 
     // 6S 5200 mAh LiPo on the top plate
     box(0.155, 0.045, 0.055, mat.lipo, -0.03, 0.0545, 0, ac);
@@ -331,49 +333,34 @@
     box(0.016, 0.0135, 0.021, mat.steel, 0.061, -0.0045, -0.018, ac);
     box(0.045, 0.017, 0.038, mat.plastic, 0.01, -0.0025, 0, ac);
     cyl(0.013, 0.002, mat.alu, 0.01, 0.0065, 0, ac, 24);
-    box(0.04, 0.02, 0.05, mat.white, -0.058, 0.004, 0, ac);
 
-    // Livox Mid-360S: 65 x 65 mm body with a round scanning window
-    function livox(parent, inverted) {
-      var u = new T.Group();
-      parent.add(u);
-      roundBox(0.065, 0.036, 0.065, 0.012, mat.livox, u).position.y = -0.012;
-      cyl(0.0315, 0.02, mat.glass, 0, 0.016, 0, u, 48);
-      cyl(0.0322, 0.004, mat.livoxCap, 0, 0.028, 0, u, 48);
-      cyl(0.0322, 0.002, mat.livoxCap, 0, 0.0055, 0, u, 48);
-      if (inverted) u.rotation.z = Math.PI;
-      return u;
-    }
-    // #1 under the nose, inverted (window faces down: −52° to +7°)
-    box(0.11, 0.004, 0.05, mat.carbon, 0.13, -0.023, 0, ac);
-    box(0.05, 0.024, 0.05, mat.petg, 0.165, -0.037, 0, ac);
-    var lidarNose = livox(ac, true);
-    lidarNose.position.set(0.165, -0.078, 0);
-    // #2 on the top mast, upright (−7° to +52°)
-    box(0.04, 0.008, 0.04, mat.petg, 0.085, 0.035, 0, ac);
-    cyl(0.006, 0.17, mat.tube, 0.085, 0.12, 0, ac, 16);
-    box(0.05, 0.006, 0.05, mat.petg, 0.085, 0.206, 0, ac);
-    var lidarMast = livox(ac, false);
-    lidarMast.position.set(0.085, 0.239, 0);
+    // Unitree L2: 75 x 75 x 65 mm, hanging dome-down from a bracket under the nose.
+    // Its scan centre is 21.5 cm ahead of the frame centre and 8.2 cm below it.
+    var L2O = new T.Vector3(0.215, -0.082, 0);
+    box(0.05, 0.03, 0.05, mat.petg, 0.215, -0.037, 0, ac);
+    var l2 = new T.Group();
+    l2.position.set(0.215, -0.0695, 0);
+    ac.add(l2);
+    roundBox(0.075, 0.04, 0.075, 0.01, mat.l2, l2).position.y = 0;
+    cyl(0.0305, 0.004, mat.alu, 0, -0.022, 0, l2, 48);
+    var dome = new T.Mesh(new T.SphereGeometry(0.025, 32, 16, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2), mat.dome);
+    dome.position.y = -0.024;
+    dome.castShadow = true;
+    l2.add(dome);
 
-    // TFS20-L rangefinders: one looking straight down, one straight up from the mast
-    box(0.022, 0.016, 0.022, mat.tfs, 0.055, -0.03, 0.045, ac);
-    [-0.005, 0.005].forEach(function (dx) { cyl(0.0035, 0.002, mat.glass, 0.055 + dx, -0.0385, 0.045, ac, 16); });
-    box(0.004, 0.004, 0.034, mat.petg, 0.085, 0.16, 0.021, ac);
-    box(0.022, 0.016, 0.022, mat.tfs, 0.085, 0.16, 0.045, ac);
-    [-0.005, 0.005].forEach(function (dx) { cyl(0.0035, 0.002, mat.glass, 0.085 + dx, 0.1685, 0.045, ac, 16); });
+    // nose boom from the bottom plate, above the L2's +6 degree limit, so neither sensor blocks the other
+    box(0.237, 0.016, 0.016, mat.carbon, 0.2035, -0.025, 0, ac);
 
-    // IMX500 AI Camera on a printed bracket and micro servo, ahead of the nose lidar
-    box(0.006, 0.09, 0.03, mat.petg, 0.203, -0.085, 0, ac);
-    box(0.012, 0.022, 0.012, mat.plastic, 0.205, -0.125, 0.021, ac);
+    // IMX500 AI Camera on a micro-servo pitch gimbal at the tip of the boom
+    box(0.014, 0.024, 0.014, mat.plastic, 0.326, -0.022, 0.018, ac);
     var gimbal = new T.Group();
-    gimbal.position.set(0.212, -0.14, 0);
+    gimbal.position.set(0.335, -0.03, 0);
     ac.add(gimbal);
     box(0.0016, 0.025, 0.024, mat.pcb, 0.004, 0, 0, gimbal);
     box(0.009, 0.009, 0.009, mat.plastic, 0.009, 0, 0, gimbal);
     cyl(0.004, 0.006, mat.glass, 0.0155, 0, 0, gimbal, 20).rotation.z = Math.PI / 2;
 
-    // a camera that looks exactly where the IMX500 does (78° diagonal, 4:3)
+    // a camera that looks exactly where the IMX500 does (about 66 x 52 degrees, 4:3)
     var eye = new T.PerspectiveCamera(51.8, 65.8 / 51.8 * 1.0, 0.05, 20);
     eye.aspect = Math.tan(65.8 / 2 * Math.PI / 180) / Math.tan(51.8 / 2 * Math.PI / 180);
     eye.updateProjectionMatrix();
@@ -381,8 +368,31 @@
     eye.rotation.y = -Math.PI / 2;
     gimbal.add(eye);
 
-    // ================================================================ the ground
-    var HOVER = 1.02;
+    // TFS20-L single beams: one on the belly looking down, one on the top plate looking up
+    box(0.022, 0.016, 0.022, mat.tfs, 0.055, -0.03, 0.045, ac);
+    [-0.005, 0.005].forEach(function (dx) { cyl(0.0035, 0.002, mat.glass, 0.055 + dx, -0.0385, 0.045, ac, 16); });
+    box(0.022, 0.016, 0.022, mat.tfs, 0.055, 0.04, 0.045, ac);
+    [-0.005, 0.005].forEach(function (dx) { cyl(0.0035, 0.002, mat.glass, 0.055 + dx, 0.0485, 0.045, ac, 16); });
+
+    // Where the airframe blocks the L2 (the package bay, legs and skids), as boxes in
+    // the aircraft frame: min and max corners. Rays that hit one return nothing.
+    var OCC = [
+      [[-0.1, -0.145, -0.075], [0.1, -0.025, 0.075]],
+      [[-0.17, -0.228, 0.153], [0.17, -0.214, 0.167]],
+      [[-0.17, -0.228, -0.167], [0.17, -0.214, -0.153]]
+    ];
+    [1, -1].forEach(function (sx) {
+      [1, -1].forEach(function (s) {
+        for (var k = 0; k < 3; k++) {
+          var y0 = -0.0195 - 0.069 * k, y1 = y0 - 0.069, z0 = s * (0.055 + 0.035 * k), z1 = s * (0.055 + 0.035 * (k + 1));
+          OCC.push([[sx * 0.06 - 0.009, y1 - 0.004, Math.min(z0, z1) - 0.009], [sx * 0.06 + 0.009, y0 + 0.004, Math.max(z0, z1) + 0.009]]);
+        }
+      });
+    });
+
+
+    // ================================================================ the course
+    var HOVER = 1.25;
     var paver = paverTexture(T, renderer);
     paver.repeat.set(60, 60);
     var ground = new T.Mesh(new T.PlaneGeometry(30, 30), std({ map: paver, roughness: 0.93, metalness: 0.0, envMapIntensity: 0.35 }));
@@ -408,37 +418,58 @@
       scene.add(pool);
     })();
 
-    // three boxes, 12 to 45 cm tall, as in the simulator scene
-    var obstacles = [
-      { x: 1.2, z: 0.62, w: 0.30, h: 0.12, d: 0.24, r: 0.2 },
-      { x: 0.86, z: -0.62, w: 0.24, h: 0.30, d: 0.24, r: -0.35 },
-      { x: 2.35, z: 0.05, w: 0.45, h: 0.45, d: 0.40, r: 0.12 }
+    // Posts, a tree whose crown bulges above the lidar's view, and a building corner.
+    // Real legs run hundreds of metres at 5 to 40 m up; here the course is shrunk to fit.
+    var posts = [
+      { x: 1.6, z: -0.8, r: 0.09, h: 2.8 },
+      { x: 3.6, z: -0.25, r: 0.1, h: 3.0 },
+      { x: -1.2, z: -1.45, r: 0.09, h: 2.6 }
     ];
-    var obstacleMeshes = [];
-    obstacles.forEach(function (o) {
-      var m = box(o.w, o.h, o.d, mat.box, o.x, o.h / 2, o.z);
-      m.rotation.y = o.r;
-      m.updateMatrixWorld();
-      o.mesh = m;
-      o.inv = new T.Matrix4().copy(m.matrixWorld).invert();
-      obstacleMeshes.push(m);
+    var cylinders = [], spheres = [], boxes = [];
+    posts.forEach(function (o) {
+      cyl(o.r, o.h, mat.post, o.x, o.h / 2, o.z, scene, 28);
+      cylinders.push({ x: o.x, z: o.z, r: o.r, y0: 0, y1: o.h });
     });
+    var tree = { x: 2.5, z: 0.6 };
+    cyl(0.08, 1.7, mat.bark, tree.x, 0.85, tree.z, scene, 20);
+    cylinders.push({ x: tree.x, z: tree.z, r: 0.08, y0: 0, y1: 1.62 });
+    var crown = new T.Mesh(new T.IcosahedronGeometry(0.5, 2), mat.leaf);
+    crown.position.set(tree.x, 2.07, tree.z);
+    crown.castShadow = crown.receiveShadow = true;
+    scene.add(crown);
+    spheres.push({ c: crown.position.clone(), r: 0.5 });
+    var bld = { x: 5.4, z: -1.9, w: 1.4, h: 2.4, d: 1.2, r: -0.18 };
+    var bm = box(bld.w, bld.h, bld.d, mat.wall, bld.x, bld.h / 2, bld.z);
+    bm.rotation.y = bld.r;
+    bm.updateMatrixWorld();
+    bld.mesh = bm;
+    bld.inv = new T.Matrix4().copy(bm.matrixWorld).invert();
+    boxes.push(bld);
+
 
     // ================================================================ sensor layer
     var sensors = new T.Group();
     scene.add(sensors);
 
-    // SafeLand overlay: anything the camera sees gets its class colour.
+    // The camera's depth grid: anything the camera sees is tinted by its distance from
+    // the lens, with the 12 x 16 cells the pilot reads drawn over it.
     var projUniforms = {
       uVP: { value: new T.Matrix4() },
-      uTime: { value: 0 }
+      uLens: { value: new T.Vector3() },
+      uTime: { value: 0 },
+      uNear: { value: new T.Vector3(DEPTH_NEAR[0], DEPTH_NEAR[1], DEPTH_NEAR[2]) },
+      uMid: { value: new T.Vector3(DEPTH_MID[0], DEPTH_MID[1], DEPTH_MID[2]) },
+      uFar: { value: new T.Vector3(DEPTH_FAR[0], DEPTH_FAR[1], DEPTH_FAR[2]) }
     };
-    function projMaterial(rgb, opacity) {
+    function projMaterial(opacity) {
       return new T.ShaderMaterial({
         uniforms: {
           uVP: projUniforms.uVP,
+          uLens: projUniforms.uLens,
           uTime: projUniforms.uTime,
-          uColor: { value: new T.Vector3(rgb[0], rgb[1], rgb[2]) },
+          uNear: projUniforms.uNear,
+          uMid: projUniforms.uMid,
+          uFar: projUniforms.uFar,
           uOpacity: { value: opacity }
         },
         vertexShader: [
@@ -450,7 +481,8 @@
           '}'
         ].join('\n'),
         fragmentShader: [
-          'uniform mat4 uVP; uniform vec3 uColor; uniform float uOpacity; uniform float uTime;',
+          'uniform mat4 uVP; uniform vec3 uLens; uniform vec3 uNear; uniform vec3 uMid; uniform vec3 uFar;',
+          'uniform float uOpacity; uniform float uTime;',
           'varying vec3 vW;',
           'void main(){',
           '  vec4 c = uVP * vec4(vW, 1.0);',
@@ -458,13 +490,16 @@
           '  vec2 n = c.xy / c.w;',
           '  vec2 a = abs(n);',
           '  if (a.x > 1.0 || a.y > 1.0) discard;',
+          '  float d = clamp((distance(vW, uLens) - 0.6) / 5.4, 0.0, 1.0);',
+          '  vec3 col = d < 0.5 ? mix(uNear, uMid, d * 2.0) : mix(uMid, uFar, d * 2.0 - 1.0);',
           '  float edge = smoothstep(1.0, 0.965, max(a.x, a.y));',
-          '  float sweep = fract(0.5 - 0.5 * n.y - uTime * 0.22);',
-          '  float band = smoothstep(0.93, 1.0, sweep) * 0.28;',
-          '  vec2 cell = abs(fract((n * 0.5 + 0.5) * 8.0 + 0.5) - 0.5);',
-          '  float grid = 1.0 - smoothstep(0.0, 0.035, min(cell.x, cell.y));',
-          '  float alpha = uOpacity * edge + (band + grid * 0.22) * edge;',
-          '  gl_FragColor = vec4(mix(uColor, vec3(1.0), max(band * 0.6, grid * 0.55)), alpha);',
+          '  float sweep = fract(0.5 - 0.5 * n.y - uTime * 0.2);',
+          '  float band = smoothstep(0.94, 1.0, sweep) * 0.2;',
+          '  vec2 cell = abs(fract((n * 0.5 + 0.5) * vec2(16.0, 12.0) + 0.5) - 0.5);',
+          '  float grid = 1.0 - smoothstep(0.0, 0.04, min(cell.x, cell.y));',
+          '  float reach = 1.0 - smoothstep(4.8, 6.4, distance(vW, uLens));',
+          '  float alpha = (uOpacity * edge + (band + grid * 0.2) * edge) * reach;',
+          '  gl_FragColor = vec4(mix(col, vec3(1.0), max(band * 0.6, grid * 0.5)), alpha);',
           '}'
         ].join('\n'),
         transparent: true,
@@ -474,13 +509,24 @@
         polygonOffsetUnits: -2
       });
     }
-    var groundTint = new T.Mesh(new T.PlaneGeometry(12, 12), projMaterial(SAFE_ROAD, 0.3));
+    var groundTint = new T.Mesh(new T.PlaneGeometry(14, 14), projMaterial(0.3));
     groundTint.rotation.x = -Math.PI / 2;
-    groundTint.position.y = 0.0015;
+    groundTint.position.set(3, 0.0015, 0);
     groundTint.renderOrder = 1;
     sensors.add(groundTint);
-    obstacles.forEach(function (o) {
-      var m = new T.Mesh(new T.BoxGeometry(o.w * 1.01, o.h * 1.01, o.d * 1.01), projMaterial(SAFE_OBST, 0.62));
+    var obstTint = projMaterial(0.55);
+    cylinders.forEach(function (o) {
+      var m = new T.Mesh(new T.CylinderGeometry(o.r * 1.04, o.r * 1.04, o.y1 - o.y0 + 0.004, 28, 1, true), obstTint);
+      m.position.set(o.x, (o.y0 + o.y1) / 2, o.z);
+      sensors.add(m);
+    });
+    spheres.forEach(function (o) {
+      var m = new T.Mesh(new T.IcosahedronGeometry(o.r * 1.03, 2), obstTint);
+      m.position.copy(o.c);
+      sensors.add(m);
+    });
+    boxes.forEach(function (o) {
+      var m = new T.Mesh(new T.BoxGeometry(o.w * 1.01, o.h * 1.01, o.d * 1.01), obstTint);
       m.position.copy(o.mesh.position);
       m.rotation.copy(o.mesh.rotation);
       sensors.add(m);
@@ -490,18 +536,18 @@
     var frPos = new Float32Array(8 * 2 * 3);
     var frGeo = new T.BufferGeometry();
     frGeo.setAttribute('position', new T.BufferAttribute(frPos, 3));
-    var frustum = new T.LineSegments(frGeo, new T.LineBasicMaterial({ color: 0x7a2a7a, transparent: true, opacity: 0.55 }));
+    var frustum = new T.LineSegments(frGeo, new T.LineBasicMaterial({ color: 0xa4553a, transparent: true, opacity: 0.55 }));
     frustum.frustumCulled = false;
     sensors.add(frustum);
     var fanPos = new Float32Array(4 * 3 * 3);
     var fanGeo = new T.BufferGeometry();
     fanGeo.setAttribute('position', new T.BufferAttribute(fanPos, 3));
-    var fan = new T.Mesh(fanGeo, new T.MeshBasicMaterial({ color: 0x9a4b9a, transparent: true, opacity: 0.07, side: T.DoubleSide, depthWrite: false }));
+    var fan = new T.Mesh(fanGeo, new T.MeshBasicMaterial({ color: 0xc27350, transparent: true, opacity: 0.07, side: T.DoubleSide, depthWrite: false }));
     fan.frustumCulled = false;
     sensors.add(fan);
 
     // lidar returns: a rolling buffer re-sampled every frame, each point fading with age
-    var NPTS = 14000;
+    var NPTS = 16000;
     var ptPos = new Float32Array(NPTS * 3);
     var ptCol = new Float32Array(NPTS * 3);
     var ptBirth = new Float32Array(NPTS);
@@ -552,76 +598,31 @@
     points.frustumCulled = false;
     sensors.add(points);
 
-    // the patch straight below that neither lidar can see (nose unit reaches down to −52°)
-    var blindPts = [];
-    for (var bk = 0; bk <= 128; bk++) {
-      var ba = bk / 128 * Math.PI * 2;
-      blindPts.push(new T.Vector3(Math.cos(ba), 0, Math.sin(ba)));
-    }
-    var blind = new T.Line(new T.BufferGeometry().setFromPoints(blindPts), new T.LineDashedMaterial({ color: 0x4a4540, dashSize: 0.04, gapSize: 0.035, transparent: true, opacity: 0.7, depthWrite: false }));
-    blind.computeLineDistances();
-    blind.position.y = 0.004;
-    sensors.add(blind);
-    var TAN52 = Math.tan(52 * Math.PI / 180);
-
     // downward and upward single beams
     var beamMat = new T.MeshBasicMaterial({ color: 0xe8542f, transparent: true, opacity: 0.85 });
     var beamDown = new T.Mesh(new T.CylinderGeometry(0.0018, 0.0018, 1, 8), beamMat);
     sensors.add(beamDown);
-    var beamUp = new T.Mesh(new T.CylinderGeometry(0.0012, 0.0012, 1, 8), new T.MeshBasicMaterial({ color: 0xe8542f, transparent: true, opacity: 0.35 }));
+    var beamUp = new T.Mesh(new T.CylinderGeometry(0.0014, 0.0014, 1, 8), new T.MeshBasicMaterial({ color: 0xe8542f, transparent: true, opacity: 0.45 }));
     sensors.add(beamUp);
     var spotTex = dotTexture(T);
     var spot = new T.Sprite(new T.SpriteMaterial({ map: spotTex, color: 0xff5a2a, transparent: true, depthWrite: false }));
     spot.scale.set(0.05, 0.05, 1);
     sensors.add(spot);
 
-    // candidate landing area: clear of the boxes, inside the allowed area
-    var site = new T.Group();
-    site.position.set(1.5, 0.003, -0.06);
-    site.renderOrder = 3;
-    sensors.add(site);
-    var siteFill = new T.Mesh(new T.PlaneGeometry(0.78, 0.78), new T.MeshBasicMaterial({ color: 0x27b36a, transparent: true, opacity: 0.2, depthWrite: false }));
-    siteFill.rotation.x = -Math.PI / 2;
-    site.add(siteFill);
-    var siteMat = new T.MeshBasicMaterial({ color: 0x14864a, transparent: false, depthWrite: false });
-    var L = 0.39, arm = 0.16, th = 0.022;
-    [[1, 1], [1, -1], [-1, 1], [-1, -1]].forEach(function (c) {
-      var h = new T.Mesh(new T.PlaneGeometry(arm, th), siteMat);
-      h.rotation.x = -Math.PI / 2;
-      h.position.set(c[0] * (L - arm / 2), 0.001, c[1] * (L - th / 2));
-      site.add(h);
-      var v = new T.Mesh(new T.PlaneGeometry(th, arm), siteMat);
-      v.rotation.x = -Math.PI / 2;
-      v.position.set(c[0] * (L - th / 2), 0.001, c[1] * (L - arm / 2));
-      site.add(v);
-    });
-    var ring = new T.Mesh(new T.RingGeometry(0.16, 0.175, 64), new T.MeshBasicMaterial({ color: 0x2f9e62, transparent: true, opacity: 0.8, depthWrite: false }));
-    ring.rotation.x = -Math.PI / 2;
-    ring.position.y = 0.001;
-    site.add(ring);
-    var cross = new T.Group();
-    [0, Math.PI / 2].forEach(function (r) {
-      var m = new T.Mesh(new T.PlaneGeometry(0.1, 0.01), siteMat);
-      m.rotation.x = -Math.PI / 2;
-      m.rotation.z = r;
-      m.position.y = 0.001;
-      cross.add(m);
-    });
-    site.add(cross);
 
     // ================================================================ lights
     var key = new T.DirectionalLight(0xfff3e4, 1.8);
-    key.position.set(1.6, 4.2, 2.2);
-    key.target.position.set(0.9, 0, 0);
+    key.position.set(2.6, 6.5, 3.2);
+    key.target.position.set(1.6, 0, 0);
     scene.add(key.target);
     key.castShadow = true;
     key.shadow.mapSize.set(2048, 2048);
-    key.shadow.camera.left = -2.6;
-    key.shadow.camera.right = 2.6;
-    key.shadow.camera.top = 2.6;
-    key.shadow.camera.bottom = -2.6;
+    key.shadow.camera.left = -4.5;
+    key.shadow.camera.right = 4.5;
+    key.shadow.camera.top = 4.5;
+    key.shadow.camera.bottom = -4.5;
     key.shadow.camera.near = 1;
-    key.shadow.camera.far = 9;
+    key.shadow.camera.far = 14;
     key.shadow.bias = -0.0005;
     key.shadow.normalBias = 0.01;
     key.shadow.radius = 4;
@@ -630,6 +631,7 @@
     var rim = new T.DirectionalLight(0xffffff, 0.45);
     rim.position.set(-2, 1.5, -2);
     scene.add(rim);
+
 
     // ================================================================ simulation of the sensors
     var tmpV = new T.Vector3(), tmpD = new T.Vector3(), tmpO = new T.Vector3();
@@ -643,17 +645,14 @@
       return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
     }
 
-    // ray vs rotated box (in the box's own frame)
-    function hitBox(o, origin, dir) {
-      lo.copy(origin).applyMatrix4(o.inv);
-      ld.copy(dir).transformDirection(o.inv);
-      var hx = o.w / 2, hy = o.h / 2, hz = o.d / 2;
+    // ray vs axis-aligned box given as [min, max] corners (slab test)
+    function hitAabb(bx, o, d) {
       var tmin = -Infinity, tmax = Infinity;
-      var ax = [[lo.x, ld.x, hx], [lo.y, ld.y, hy], [lo.z, ld.z, hz]];
+      var ox = [o.x, o.y, o.z], dx = [d.x, d.y, d.z];
       for (var k = 0; k < 3; k++) {
-        var p = ax[k][0], d = ax[k][1], h = ax[k][2];
-        if (Math.abs(d) < 1e-9) { if (p < -h || p > h) return Infinity; continue; }
-        var t1 = (-h - p) / d, t2 = (h - p) / d;
+        var lo0 = bx[0][k], hi0 = bx[1][k];
+        if (Math.abs(dx[k]) < 1e-9) { if (ox[k] < lo0 || ox[k] > hi0) return Infinity; continue; }
+        var t1 = (lo0 - ox[k]) / dx[k], t2 = (hi0 - ox[k]) / dx[k];
         if (t1 > t2) { var tt = t1; t1 = t2; t2 = tt; }
         tmin = Math.max(tmin, t1);
         tmax = Math.min(tmax, t2);
@@ -661,40 +660,76 @@
       }
       return tmin > 0 ? tmin : Infinity;
     }
+    // ray vs rotated box (in the box's own frame)
+    function hitBox(o, origin, dir) {
+      lo.copy(origin).applyMatrix4(o.inv);
+      ld.copy(dir).transformDirection(o.inv);
+      return hitAabb([[-o.w / 2, -o.h / 2, -o.d / 2], [o.w / 2, o.h / 2, o.d / 2]], lo, ld);
+    }
+    // ray vs upright cylinder (side only)
+    function hitCyl(c, o, d) {
+      var a = d.x * d.x + d.z * d.z;
+      if (a < 1e-9) return Infinity;
+      var px = o.x - c.x, pz = o.z - c.z;
+      var b = 2 * (px * d.x + pz * d.z), cc = px * px + pz * pz - c.r * c.r;
+      var disc = b * b - 4 * a * cc;
+      if (disc < 0) return Infinity;
+      var t = (-b - Math.sqrt(disc)) / (2 * a);
+      if (t <= 0) return Infinity;
+      var y = o.y + t * d.y;
+      return y >= c.y0 && y <= c.y1 ? t : Infinity;
+    }
+    function hitSphere(s, o, d) {
+      var px = o.x - s.c.x, py = o.y - s.c.y, pz = o.z - s.c.z;
+      var b = px * d.x + py * d.y + pz * d.z, cc = px * px + py * py + pz * pz - s.r * s.r;
+      var disc = b * b - cc;
+      if (disc < 0) return Infinity;
+      var t = -b - Math.sqrt(disc);
+      return t > 0 ? t : Infinity;
+    }
 
-    var noseWorld = new T.Vector3();
+    var RANGE = 5.0;
+    var l2World = new T.Vector3(), acInv = new T.Quaternion(), dLocal = new T.Vector3();
     var cursor = 0;
-    // Nose unit, inverted: elevations −52° to +7°, all around.
+    // The L2 hangs dome-down: its window runs from straight down (-90) to 6 degrees above
+    // horizontal, all around. Nothing above that is measured, however close.
     function scan(count, now) {
-      lidarNose.getWorldPosition(noseWorld);
-      noseWorld.y -= 0.03;
+      l2World.copy(L2O);
+      ac.localToWorld(l2World);
+      acInv.copy(ac.quaternion).invert();
       for (var k = 0; k < count; k++) {
-        var tries = 0, t = Infinity, hitObst = false;
+        var tries = 0, t = Infinity, hitObst = false, blocked = false;
         while (tries++ < 6) {
           var az = rnd() * Math.PI * 2;
-          var el = (-52 + rnd() * 59) * Math.PI / 180;
+          var el = (-90 + rnd() * 96) * Math.PI / 180;
           tmpD.set(Math.cos(el) * Math.cos(az), Math.sin(el), Math.cos(el) * Math.sin(az));
-          t = Infinity; hitObst = false;
-          if (tmpD.y < -1e-4) t = -noseWorld.y / tmpD.y;
-          for (var b = 0; b < obstacles.length; b++) {
-            var tb = hitBox(obstacles[b], noseWorld, tmpD);
-            if (tb < t) { t = tb; hitObst = true; }
+          // the airframe's own shadow: no return, which the pilot treats as unknown
+          dLocal.copy(tmpD).applyQuaternion(acInv);
+          blocked = false;
+          for (var q = 0; q < OCC.length; q++) {
+            if (hitAabb(OCC[q], L2O, dLocal) < 0.6) { blocked = true; break; }
           }
-          if (t < 3.6) break;
+          if (blocked) continue;
+          t = Infinity; hitObst = false;
+          if (tmpD.y < -1e-4) t = -l2World.y / tmpD.y;
+          var tb, b;
+          for (b = 0; b < cylinders.length; b++) { tb = hitCyl(cylinders[b], l2World, tmpD); if (tb < t) { t = tb; hitObst = true; } }
+          for (b = 0; b < spheres.length; b++) { tb = hitSphere(spheres[b], l2World, tmpD); if (tb < t) { t = tb; hitObst = true; } }
+          for (b = 0; b < boxes.length; b++) { tb = hitBox(boxes[b], l2World, tmpD); if (tb < t) { t = tb; hitObst = true; } }
+          if (t < RANGE) break;
         }
-        if (t >= 3.6) continue;
-        tmpV.copy(noseWorld).addScaledVector(tmpD, t);
+        if (blocked || t >= RANGE) continue;
+        tmpV.copy(l2World).addScaledVector(tmpD, t);
         var j = cursor * 3;
-        ptPos[j] = tmpV.x; ptPos[j + 1] = tmpV.y + 0.004; ptPos[j + 2] = tmpV.z;
+        ptPos[j] = tmpV.x; ptPos[j + 1] = tmpV.y + (hitObst ? 0 : 0.004); ptPos[j + 2] = tmpV.z;
         if (hitObst) {
-          // returns off something raised: warm
-          ptCol[j] = 0.93; ptCol[j + 1] = 0.45; ptCol[j + 2] = 0.16;
+          ptCol[j] = 0.0; ptCol[j + 1] = 0.47; ptCol[j + 2] = 0.47;
         } else {
-          var f = Math.min(1, t / 3.6);
+          var f = Math.min(1, t / RANGE);
           ptCol[j] = 0.02 + 0.12 * f; ptCol[j + 1] = 0.50 - 0.18 * f; ptCol[j + 2] = 0.50 + 0.22 * f;
         }
         ptBirth[cursor] = now - (now < 0 ? 0 : rnd() * 0.05);
-        ptFade[cursor] = hitObst ? 1 : Math.max(0.15, 1 - Math.pow(t / 3.6, 1.6));
+        ptFade[cursor] = hitObst ? 1 : Math.max(0.15, 1 - Math.pow(t / RANGE, 1.6));
         cursor = (cursor + 1) % NPTS;
       }
       ptGeo.attributes.position.needsUpdate = true;
@@ -711,10 +746,11 @@
       eye.getWorldPosition(lens);
       vp.multiplyMatrices(eye.projectionMatrix, eye.matrixWorldInverse);
       projUniforms.uVP.value.copy(vp);
+      projUniforms.uLens.value.copy(lens);
       for (var k = 0; k < 4; k++) {
         tmpV.set(corners[k][0], corners[k][1], 0.5).unproject(eye);
         tmpD.copy(tmpV).sub(lens).normalize();
-        var t = tmpD.y < -1e-3 ? Math.min(-lens.y / tmpD.y, 8) : 8;
+        var t = tmpD.y < -1e-3 ? Math.min(-lens.y / tmpD.y, 4.2) : 4.2;
         cw[k].copy(lens).addScaledVector(tmpD, t);
       }
       var p = 0;
@@ -738,14 +774,7 @@
       fanGeo.attributes.position.needsUpdate = true;
     }
 
-    var tfsDown = new T.Vector3(0.055, -0.04, 0.045), tfsUp = new T.Vector3(0.085, 0.17, 0.045);
-    function updateBlind() {
-      lidarNose.getWorldPosition(tmpO);
-      var r = (tmpO.y - 0.03) / TAN52;
-      blind.position.set(tmpO.x, 0.004, tmpO.z);
-      blind.scale.set(r, 1, r);
-    }
-
+    var tfsDown = new T.Vector3(0.055, -0.04, 0.045), tfsUp = new T.Vector3(0.055, 0.049, 0.045);
     function updateBeams() {
       tmpO.copy(tfsDown);
       ac.localToWorld(tmpO);
@@ -755,16 +784,17 @@
       spot.position.set(tmpO.x, 0.006, tmpO.z);
       tmpO.copy(tfsUp);
       ac.localToWorld(tmpO);
-      beamUp.scale.set(1, 0.2, 1);
-      beamUp.position.set(tmpO.x, tmpO.y + 0.1, tmpO.z);
+      beamUp.scale.set(1, 0.7, 1);
+      beamUp.position.set(tmpO.x, tmpO.y + 0.35, tmpO.z);
     }
+
 
     // ================================================================ state + animation
     var st = {
       sensors: opts.sensors !== false,
       rotors: !reduce && opts.rotors !== false,
-      theta: -1.08, phi: 0.36, radius: 3.45,
-      target: new T.Vector3(0.85, 0.52, 0.05),
+      theta: -0.62, phi: 0.22, radius: 6.4,
+      target: new T.Vector3(1.8, 1.15, 0),
       auto: !reduce
     };
     var HOME = { theta: st.theta, phi: st.phi, radius: st.radius, target: st.target.clone() };
@@ -791,13 +821,9 @@
     function pose(t) {
       ac.position.set(0, HOVER + 0.014 * Math.sin(t * 1.7), 0);
       ac.rotation.set(0.012 * Math.sin(t * 1.3 + 1.0), 0, 0.01 * Math.sin(t * 1.1));
-      // the navigator decides where to look: the gimbal sweeps slowly
-      gimbal.rotation.z = -(52 + 9 * Math.sin(t * 0.42)) * Math.PI / 180;
+      // in flight the camera is held 5 degrees below the horizon
+      gimbal.rotation.z = -5 * Math.PI / 180;
       ac.updateMatrixWorld(true);
-      var pulse = 0.5 + 0.5 * Math.sin(t * 2.4);
-      ring.scale.setScalar(1 + 0.25 * pulse);
-      ring.material.opacity = 0.85 - 0.6 * pulse;
-      siteFill.material.opacity = 0.16 + 0.08 * pulse;
     }
 
     function step(dt) {
@@ -812,7 +838,6 @@
       if (st.sensors) {
         updateCameraFootprint();
         updateBeams();
-        updateBlind();
         scan(Math.round(NPTS * dt / ptUniforms.uLife.value), clock);
       }
     }
@@ -822,7 +847,6 @@
       pose(clock);
       updateCameraFootprint();
       updateBeams();
-      updateBlind();
       var saveLife = ptUniforms.uLife.value;
       for (var k = 0; k < NPTS; k++) {
         scan(1, clock - rnd() * saveLife * 0.95);
@@ -831,9 +855,10 @@
     prefill();
     if (!st.rotors) discMat.opacity = 0;
 
+
     // ================================================================ input
     var drag = null, hintTimer = 0;
-    function zoom(factor) { st.radius = Math.max(1.4, Math.min(8, st.radius * factor)); }
+    function zoom(factor) { st.radius = Math.max(1.4, Math.min(11, st.radius * factor)); }
     canvas.addEventListener('pointerdown', function (e) {
       drag = { x: e.clientX, y: e.clientY, touch: e.pointerType === 'touch' };
       st.auto = false;
@@ -886,8 +911,8 @@
       if (canvas.width !== Math.floor(w * pr) || canvas.height !== Math.floor(h * pr)) {
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
-        // on tall (phone) stages pull back so the scene still fits
-        camera.fov = w / h < 1 ? 40 : 30;
+        // keep at least ~48 degrees across, so tall (phone) stages still show the drone and the course
+        camera.fov = Math.max(30, 2 * Math.atan(Math.tan(24 * Math.PI / 180) / (w / h)) * 180 / Math.PI);
         camera.updateProjectionMatrix();
         ptUniforms.uScale.value = h * pr / (2 * Math.tan(camera.fov * Math.PI / 360));
       }
@@ -941,7 +966,7 @@
       setSensors: function (on) {
         st.sensors = !!on;
         applySensors();
-        if (st.sensors) { updateCameraFootprint(); updateBeams(); updateBlind(); }
+        if (st.sensors) { updateCameraFootprint(); updateBeams(); }
         invalidate();
       },
       setRotors: function (on) { st.rotors = !!on && !reduce; if (reduce) discMat.opacity = 0; invalidate(); },

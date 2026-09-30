@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>James Tian</title>
-  <meta name="description" content="James Tian is a data scientist at the Keck School of Medicine of USC and an AI engineer. He was the founding engineer of Apateu, built Moonlight for parents of children with autism, and is building an autonomous delivery drone with a high-school student.">
+  <meta name="description" content="James Tian is a data scientist at the Keck School of Medicine of USC and an AI engineer. He was the founding engineer of Apateu, built Moonlight for parents of children with autism, and is building the autonomy software for a delivery drone.">
   <meta name="author" content="James Tian">
   <meta name="theme-color" content="#faf9f5">
   <meta property="og:type" content="website">
@@ -47,7 +47,7 @@
     <section class="intro" aria-label="About">
       <div>
         <h1 class="sr-only">About</h1>
-        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system. I also build AI products: I was the founding engineer of <a href="https://www.app.westapt.com/">Apateu</a>, a student-housing marketplace and AI search engine, and I built <a href="#moonlight">Moonlight</a>, an iPhone app for parents of children with autism. With a high-school student I mentor, I’m building an <a href="#drone">autonomous delivery drone</a> that picks its own landing spot. I grew up in China and studied statistics at Southeast University (东南大学) in Nanjing, then mathematics at Utrecht University and analytics at USC.</p>
+        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system. I also build AI products: I was the founding engineer of <a href="https://www.app.westapt.com/">Apateu</a>, a student-housing marketplace and AI search engine, and I built <a href="#moonlight">Moonlight</a>, an iPhone app for parents of children with autism. I’m also building the autonomy software for an <a href="#drone">autonomous delivery drone</a>: a learned pilot that flies around trees, poles and buildings. I grew up in China and studied statistics at Southeast University (东南大学) in Nanjing, then mathematics at Utrecht University and analytics at USC.</p>
         <p>Most of my work is checking whether a result, a model or a machine is right enough to act on, and building the pipeline that makes it so.</p>
       </div>
       <img class="portrait" src="assets/james-640.jpg" width="457" height="640" alt="James Tian" fetchpriority="high">
@@ -148,14 +148,14 @@
 
       <details class="item" id="drone">
         <summary>
-          <img class="thumb" src="assets/drone.jpg" width="1040" height="1040" alt="3D model of the X650 delivery drone hovering over paving, its camera footprint tinted in SafeLand’s colours and lidar returns scattered around it" loading="lazy">
-          <span class="txt"><strong class="t">An autonomous delivery drone</strong><span class="role">Mentor and autonomy engineer · with a high-school student in San Diego · summer 2026 to present</span><span class="blurb">A drone that carries a one-kilogram package to a delivery area, inspects the ground with an AI camera and two 3D lidars, and chooses where to land, or declines when the evidence is not good enough. No landing marker needed. Built with a high-school student I mentor; so far it flies only in simulation.</span></span>
+          <img class="thumb" src="assets/drone.jpg" width="1040" height="1040" alt="3D model of the X650 delivery drone flying among posts and a tree, with its camera’s depth grid tinted near to far and lidar returns scattered around it" loading="lazy">
+          <span class="txt"><strong class="t">An autonomous delivery drone</strong><span class="role">AI engineer · forward-deployed, for a client · summer 2026 to present</span><span class="blurb">A drone that flies a one-kilogram package from A to B and back around trees, poles and buildings, reading a lidar and a camera together. A learned pilot does the flying; fixed safety rules it cannot override have the last word. So far it flies only in simulation: the aircraft is not built yet.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
           <figure class="bleed stage-fig">
             <div class="stage" id="drone-viewer" style="background-image:url(assets/drone-stage.jpg)">
-              <canvas role="img" tabindex="0" aria-label="Interactive to-scale 3D model of the X650 delivery drone hovering over paving while it inspects the ground. Drag or use the arrow keys to orbit; hold Command or Control and scroll, or press plus and minus, to zoom.">A to-scale model of the X650 delivery drone hovering over paved ground, with its camera footprint, lidar returns and a candidate landing area.</canvas>
+              <canvas role="img" tabindex="0" aria-label="Interactive to-scale 3D model of the X650 delivery drone flying among posts and a tree. Drag or use the arrow keys to orbit; hold Command or Control and scroll, or press plus and minus, to zoom.">A to-scale model of the X650 delivery drone among posts and a tree, with its camera’s depth grid and lidar returns.</canvas>
               <div class="stage-ui">
                 <p class="stage-tag">Live 3D model<span class="stage-hint"><span class="h-mouse"> · drag to orbit, ⌘/Ctrl + scroll to zoom</span><span class="h-touch"> · drag sideways to orbit</span></span></p>
                 <div class="stage-btns">
@@ -164,34 +164,40 @@
                   <button type="button" data-act="reset" aria-label="Reset view"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 8a4.8 4.8 0 1 0 1.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 2.2v3.1h3.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
                 <ul class="stage-legend" aria-label="Legend">
-                  <li><i class="sw" style="--c:#a45aa4"></i>Camera footprint, labelled road</li>
-                  <li><i class="sw" style="--c:#e3cf2c"></i>Obstacle</li>
+                  <li><i class="grad"></i>Camera depth grid, near to far</li>
                   <li><i class="dot"></i>Lidar returns</li>
-                  <li><i class="beam"></i>Downward beam</li>
-                  <li><i class="blind"></i>Lidar blind spot</li>
-                  <li><i class="site"></i>Candidate landing area</li>
+                  <li><i class="beam"></i>Beams down and up</li>
                 </ul>
                 <p class="stage-toast" aria-hidden="true">Hold ⌘ or Ctrl to zoom</p>
               </div>
             </div>
-            <figcaption>The aircraft as we will build it, drawn to scale in metres from the parts list: Holybro X650 V2 with 15-inch props, Pixhawk 6C Mini, Raspberry Pi 5, the Raspberry Pi AI Camera (IMX500) on a tilt gimbal at the nose, a Livox Mid-360S lidar under the nose and another on the mast, single-beam rangefinders pointing down and up, and a one-kilogram package. The sensor effects illustrate how inspection works; they are not recorded data.</figcaption>
+            <figcaption>The aircraft as we will build it, drawn to scale in metres from the parts list: Holybro X650 V2 with 15-inch props, Pixhawk 6C Mini, Raspberry Pi 5, a Unitree L2 lidar hanging dome-down under the nose, the Raspberry Pi AI Camera (IMX500) on a pitch gimbal at the tip of a nose boom, single-beam rangefinders pointing down and up, and a one-kilogram package. The lidar sees from straight down to 6° above the horizon, so the tree crown ahead is seen only by the camera. The course is shrunk to fit, and the sensor effects are an illustration, not recorded data.</figcaption>
           </figure>
 
           <div class="prose">
             <h4>The mission</h4>
-            <p>The first version flew to a printed landing marker. In September we dropped the marker. Now the drone flies to an allowed delivery area, inspects the ground and picks a spot that is firm, level, clear of people and big enough for the aircraft, then keeps checking it all the way down. If it cannot establish one, it declines and flies back. Clear-looking ground is not proof of a safe landing, so missing or stale evidence counts as unknown, never as clear.</p>
-            <p>The design splits the brain in two. ArduPilot on the Pixhawk stays the pilot: stabilization, GPS, failsafes, geofence and the human’s override switch. The Raspberry Pi decides where to look and where to go, and sends navigation commands through the autopilot; it never drives the motors directly.</p>
+            <p>Fly a package from A to B around real obstacles, land at B, release it, and fly home the same way. That is the part a waypoint autopilot cannot do: it follows a line, and it cannot see a tree.</p>
+            <p>The design splits the work in three. ArduPilot on the Pixhawk is the vehicle: it keeps the aircraft stable, tracks the speed it is asked for, takes off, touches down and runs the failsafes. A learned pilot on the Raspberry Pi chooses the path and the speed, sending four commands ten times a second: forward, sideways and vertical speed, and turn rate. Between them sits a guardian, plain rules rather than anything learned, which the pilot cannot override. If the Pi crashes or goes quiet, the autopilot brakes, climbs and flies home.</p>
 
-            <h4>Choosing the camera and the model</h4>
-            <p>The camera is the Raspberry Pi AI Camera, whose Sony IMX500 sensor runs a small neural network on the chip itself. The student already has a person detector running on it, and we kept it. To understand the ground we tested pretrained segmentation models instead of training our own. A street-scene model was the first baseline; we chose <a href="https://github.com/markus-42/SafeLand">SafeLand</a>, a SegFormer model trained on aerial images that labels 23 classes, including road, grass, water, obstacles and people.</p>
-            <p>SafeLand has 47 million parameters, which needs about 47 MB even at 8-bit precision, and the IMX500 has roughly 8 MB for its model. So SafeLand runs on the Pi’s CPU instead: loaded and warmed before takeoff, idle during cruise, and running only while the drone searches, approaches and descends.</p>
+            <h4>What it sees</h4>
+            <p>A camera tells you what things are and sees far in daylight; a lidar measures where they are, in any light. The pilot gets both. The lidar is a Unitree L2 hung upside down under the nose, so it sees from straight down to 6° above the horizon, all around, out to about 15 m on dark surfaces. Above that it is blind, which is why the camera sits on a boom in front of it, looking ahead and up.</p>
+            <p>The camera is the Raspberry Pi AI Camera, whose Sony IMX500 sensor runs a small neural network on the chip itself. The plan is for it to turn each image into distances with ZipDepth, an open depth model, which I converted and squeezed into 7.5 of the chip’s 8 MB; its speed on the real camera is the next measurement. The pilot reads a coarse 12 × 16 grid of those distances, which looks the same in simulation as on the aircraft. Raw pixels would not.</p>
+            <p>Speed follows what it can see. Like a careful human pilot, it flies only as fast as it can stop within the distance the lidar has confirmed clear: 6 m/s at most, slower near obstacles. Anything the sensors cannot see clearly counts as blocked, never as clear.</p>
+
+            <h4>How it learns</h4>
+            <p>Training runs in a simulator I built in PyTorch rather than in a game engine. The obstacle courses are simple solids, so every lidar ray, camera distance and collision can be computed exactly, for thousands of aircraft at once on one GPU: about 10,000 simulated steps a second, or 17 minutes of flight every second. The courses run from open fields through posts, trees and buildings to courtyards and dead-end alleys, with ceilings low enough that the pilot has to go around obstacles, not over them.</p>
+            <p>The pilot is one small network trained with PPO, a reinforcement-learning method, and it has to beat a hand-written pilot with the same sensors and the same guardian before it goes near an aircraft. It is not there yet. After two hours of training on a rented GPU it reached B on 225 of 240 courses it had never seen, with one collision, and it was faster wherever both arrived; the hand-written pilot still arrives more often, 235 of 240. The learned pilot also found two ways to crash that the guardian’s rules had missed and the hand-written pilot never tried. After a redesign, 9,840 simulated flights, including seven pilots written to misbehave, ended without a crash.</p>
+            <p>Before any of this, our first flight code carried a 2.7 km route on three simulated airframes, and a fault lab killed a motor, jammed the GPS and faked a dying battery to see what the autopilot would do.</p>
+
+            <h4>Later: choosing where to land</h4>
+            <p>For the first demo, B is an easy spot chosen in advance and the autopilot simply lands there. Later, the same sensors will choose a spot on unmarked ground that is firm, level, clear of people and big enough, or decline and fly back. For that we tested pretrained segmentation models instead of training our own and chose <a href="https://github.com/markus-42/SafeLand">SafeLand</a>, a SegFormer model trained on aerial images that labels 23 classes, including road, grass, water, obstacles and people. At 47 million parameters it is far too big for the camera chip, so it runs on the Pi’s processor, where it currently takes about 12 seconds per image. That was measured on an underpowered supply, so the landing work waits until it is measured again.</p>
           </div>
 
           <figure class="bleed-md compare-fig" data-compare>
             <div class="compare-tabs" role="tablist" aria-label="Simulated scene">
               <button type="button" role="tab" aria-selected="true" data-rgb="assets/safeland-obstacles-rgb.jpg" data-lab="assets/safeland-obstacles-labels.jpg" data-cap="Three boxes, 12 to 45 cm tall, on level paving. SafeLand marks them as obstacles (yellow) and the paving as road (purple).">Obstacles</button>
-              <button type="button" role="tab" aria-selected="false" data-rgb="assets/safeland-person-rgb.jpg" data-lab="assets/safeland-person-labels.jpg" data-cap="A person walks into the landing area. SafeLand marks them in magenta, and the inspection holds while anyone is in view.">A person walks in</button>
-              <button type="button" role="tab" aria-selected="false" data-rgb="assets/safeland-step-rgb.jpg" data-lab="assets/safeland-step-labels.jpg" data-cap="A 25 cm step through the paving. SafeLand calls half of it water: it judges appearance, not height. This is why the lidars, not the camera, decide whether ground is level.">A 25 cm step</button>
+              <button type="button" role="tab" aria-selected="false" data-rgb="assets/safeland-person-rgb.jpg" data-lab="assets/safeland-person-labels.jpg" data-cap="A person walks into the landing area. SafeLand marks them in magenta.">A person walks in</button>
+              <button type="button" role="tab" aria-selected="false" data-rgb="assets/safeland-step-rgb.jpg" data-lab="assets/safeland-step-labels.jpg" data-cap="A 25 cm step through the paving. SafeLand calls half of it water: it judges appearance, not height. This is why the lidar, not the camera, decides whether ground is level.">A 25 cm step</button>
             </div>
             <div class="compare" style="--pos:50%">
               <img class="c-a" src="assets/safeland-obstacles-rgb.jpg" width="640" height="480" alt="Rendered camera frame from the simulator" loading="lazy">
@@ -212,14 +218,10 @@
           </figure>
 
           <div class="prose">
-            <h4>How it will learn</h4>
-            <p>Training is simulation-first. In NVIDIA Isaac Lab, every rendered camera frame passes through the same frozen SafeLand model the Pi will run, with a modelled delay standing in for the Pi’s, so the navigator learns from late, imperfect predictions rather than the simulator’s perfect labels. At each step it reads 2,906 numbers: SafeLand’s class probabilities on an 8 × 8 grid over the image, lidar ranges with flags for where nothing came back, a short memory of measured ground heights, and the aircraft’s own state and battery.</p>
-            <p>A scripted controller comes first, so the landing rules can be checked by hand. Only after the simulator passes those checks does PPO, a reinforcement-learning method, learn the approach, with the vision weights held fixed. On September 22 the inspection loop (rendered camera, SafeLand, lidar and a scripted controller) ran on six test scenes, with one and then four simulated cameras at once. No learning has started yet, on purpose.</p>
-            <p>Before any of this, our first flight code carried a 2.7 km route over a virtual Mission Bay on three simulated airframes, and a fault lab killed a motor, jammed the GPS and faked a dying battery to see what the autopilot would do. The student now decides what the delivery demo needs and which layer of the system should own it, which is the part I find most meaningful.</p>
             <ul>
-              <li>Holybro X650 V2 airframe with 15-inch propellers; a one-kilogram package released by a servo latch, only after a verified landing.</li>
-              <li>Two Livox Mid-360S lidars, one upside down under the nose and one upright on the mast, together cover 52° above and below the horizon all the way around. Directly beneath the drone is a blind spot, so the plan is to map the ground ahead during the approach and keep tracking it on the way down; the single downward beam only checks height.</li>
-              <li>The Pi and the AI Camera already run on the bench; the airframe and lidars are not built yet.</li>
+              <li>Holybro X650 V2 airframe with 15-inch propellers; a one-kilogram package released by a servo latch, only after a supervised check on the ground.</li>
+              <li>One Unitree L2 lidar rather than two Livox Mid-360S: hung upside down it also sees the ground straight below, and it costs $419 instead of $1,893.</li>
+              <li>The Pi and the AI Camera run on the bench; the airframe and the lidar are not bought or built yet, and nothing has flown.</li>
             </ul>
           </div>
         </div>
