@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>James Tian</title>
-  <meta name="description" content="James Tian is a data scientist at the Keck School of Medicine of USC and an AI engineer. He was the founding engineer of Apateu, built Moonlight for parents of children with autism, and is building the autonomy software for a delivery drone.">
+  <meta name="description" content="James Tian is a data scientist at the Keck School of Medicine of USC and an AI engineer. He was the founding engineer of Apateu, built Moonlight for parents of children with autism, and is building the vision system for a home robot.">
   <meta name="author" content="James Tian">
   <meta name="theme-color" content="#faf9f5">
   <meta property="og:type" content="website">
   <meta property="og:title" content="James Tian">
-  <meta property="og:description" content="Data scientist at the Keck School of Medicine of USC. AI engineer: Apateu, Moonlight and an autonomous delivery drone. Los Angeles.">
+  <meta property="og:description" content="Data scientist at the Keck School of Medicine of USC. AI engineer: Apateu, Moonlight and the eyes of a home robot. Los Angeles.">
   <meta property="og:url" content="https://jtian123.github.io/">
   <meta property="og:image" content="https://jtian123.github.io/assets/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -47,8 +47,8 @@
     <section class="intro" aria-label="About">
       <div>
         <h1 class="sr-only">About</h1>
-        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system. I also build AI products: I was the founding engineer of <a href="https://www.app.westapt.com/">Apateu</a>, a student-housing marketplace and AI search engine, and I built <a href="#moonlight">Moonlight</a>, an iPhone app for parents of children with autism. I’m also building the autonomy software for an <a href="#drone">autonomous delivery drone</a>: a learned pilot that flies around trees, poles and buildings. I grew up in China and studied statistics at Southeast University (东南大学) in Nanjing, then mathematics at Utrecht University and analytics at USC.</p>
-        <p>Most of my work is checking whether a result, a model or a machine is right enough to act on, and building the pipeline that makes it so.</p>
+        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system. I also build AI products. I was the founding engineer of <a href="https://www.app.westapt.com/">Apateu</a>, a student-housing app with an AI search engine, and I built <a href="#moonlight">Moonlight</a>, an iPhone app for parents of children with autism. Now I’m teaching a small camera to understand what people are doing, the first step toward a <a href="#vision">home robot</a>. For fun, I’m also writing the software for a <a href="#drone">delivery drone</a>.</p>
+        <p>I grew up in China and studied statistics at Southeast University (东南大学) in Nanjing, then mathematics at Utrecht University and analytics at USC.</p>
       </div>
       <img class="portrait" src="assets/james-640.jpg" width="457" height="640" alt="James Tian" fetchpriority="high">
     </section>
@@ -57,23 +57,21 @@
 
     <section class="group" aria-labelledby="g-stats">
       <h3 id="g-stats">Statistics and data science</h3>
-      <p class="lead">I was a statistician before I was an engineer, and it is still how I think about everything below: what would it take to convince me this result is real?</p>
+      <p class="lead">I was a statistician before I was an engineer. I still start every project the same way: what would convince me this result is real?</p>
 
       <details class="item" id="usc">
         <summary>
           <img class="thumb" src="assets/usc.jpg" width="1040" height="1040" alt="Keck Hospital of USC: the white steel canopy over the main entrance, with palms and a fountain" loading="lazy">
-          <span class="txt"><strong class="t">Medical research at USC</strong><span class="role">Data scientist · Keck School of Medicine of USC, Division of Biostatistics · 2023 to present</span><span class="blurb">The computational analyst on five NIH-funded studies: air pollution and brain aging, childhood adversity and DNA methylation, immune signatures after trauma, a deep-learning model of adolescent brain structure, and hearing loss in children on chemotherapy.</span></span>
+          <span class="txt"><strong class="t">Medical research at USC</strong><span class="role">Data scientist · Keck School of Medicine of USC, Division of Biostatistics · 2023 to present</span><span class="blurb">I analyze the data for five NIH-funded studies: air pollution and the aging brain, childhood adversity and DNA, the immune system after trauma, hormones and the teenage brain, and hearing loss in children on chemotherapy.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
           <div class="prose">
-            <p>The questions are big and human. Does traffic pollution age the brain? What does childhood adversity write into DNA? Can a scan predict a hormone? The data is enormous and noisy, so most of my job is building the pipeline that makes an answer trustworthy before anyone reads it.</p>
-            <p>My main project follows air pollution into the brain. Working with about 1,600 MRI scans from older women in the Women’s Health Initiative Memory Study, I created and maintain <a href="https://github.com/USCbiostats/MRIreduce">MRIreduce</a>, an open-source R package on CRAN that turns raw brain images into structured features without a predefined atlas, building on my advisor’s Partition method. I then used high-dimensional causal mediation to ask which brain regions carry pollution’s effect on memory. I’m first author on the manuscript, now under revision.</p>
+            <p>My main project asks whether traffic pollution ages the brain. For it I created <a href="https://github.com/USCbiostats/MRIreduce">MRIreduce</a>, an open-source R package on CRAN that turns brain scans into data a model can use, and then traced which brain regions carry pollution’s effect on memory in about 1,600 older women. I’m first author on the paper, now under revision.</p>
             <ul>
-              <li>Harmonized eleven cohorts of blood samples from trauma and sepsis patients across three measurement platforms and found a 36-gene neutrophil signature that reproduced with 97.2% directional agreement (AAST 2026 abstract).</li>
-              <li>Built a deep-learning pipeline with explainability built in that predicts adolescent hormone levels from brain structure in about 9,100 ABCD Study participants (OHBM 2026 abstract).</li>
-              <li>Ran an epigenome-wide study of childhood maltreatment and DNA methylation: 453 young people, four timepoints, about 768,000 sites, kinship-adjusted mixed models on USC’s HPC cluster.</li>
-              <li>Built and deployed <a href="https://cihl.shinyapps.io/pedshear/">PedsHEAR</a>, a clinician-facing tool that estimates hearing-loss risk for children on cisplatin chemotherapy, around my advisor’s validated model.</li>
+              <li>Found a 36-gene immune signature after trauma that held up across eleven patient cohorts and three lab platforms (AAST 2026 abstract).</li>
+              <li>Built a deep-learning model that predicts hormone levels from brain scans of about 9,100 teenagers, and shows which brain regions drive each prediction (OHBM 2026 abstract).</li>
+              <li>Built <a href="https://cihl.shinyapps.io/pedshear/">PedsHEAR</a>, a web tool for doctors that estimates hearing-loss risk for children on cisplatin chemotherapy, around my advisor’s model.</li>
             </ul>
             <figure class="figure">
               <a href="https://github.com/USCbiostats/MRIreduce"><img src="assets/mrireduce-card.jpg" width="1200" height="600" alt="GitHub repository card for USCbiostats/MRIreduce" loading="lazy"></a>
@@ -87,12 +85,12 @@
 
     <section class="group" aria-labelledby="g-ai">
       <h3 id="g-ai">AI engineering: building apps people use</h3>
-      <p class="lead">I build apps on language models. In practice most of the work is deciding what the model is allowed to say and what the code has to verify.</p>
+      <p class="lead">I build apps on top of language models. Most of the work is deciding what the model may say and what the code has to check.</p>
 
       <details class="item" id="apateu">
         <summary>
           <img class="thumb" src="assets/apateu.jpg" width="1040" height="1040" alt="Two full screens from the Apateu iPhone app: the sublease listings feed and the AI housing agent landing" loading="lazy">
-          <span class="txt"><strong class="t">Apateu</strong><span class="role">Founding engineer · with Danbi Jang · 2025 to September 2026</span><span class="blurb">A student-housing app. Students sublease to each other with a lease signed in the app, and an AI agent answers “a 2-bed near USC under $1,400 for the summer” with specific buildings and their current listed prices.</span></span>
+          <span class="txt"><strong class="t">Apateu</strong><span class="role">Founding engineer · with Danbi Jang · 2025 to September 2026</span><span class="blurb">A student-housing app. Students sublease to each other with a lease signed in the app, and an AI agent answers “a 2-bed near USC under $1,400” with real buildings and today’s prices.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
@@ -105,12 +103,11 @@
             <figcaption>Screens from the iPhone app, July 2026: the sublease feed, the housing agent and the lease builder. Click any screen to zoom in.</figcaption>
           </figure>
           <div class="prose">
-            <p>It started with a problem Danbi and I both had: we tried to sublease our own apartments and it was miserable. A group chat, no listing, no contract, no way to know if the stranger on the other end was real. So we built the app we wanted and launched it on the App Store in September 2025.</p>
-            <p>Under the search engine is an index I built: 353 operator-specific adapters that read prices straight from property managers’ own websites across 3,700+ buildings in five metros, converted to a price per bed, because that is how students rent. The agent is a tool-use loop on Claude’s API with 34 tools, and a grounding layer keeps an amenity only when the building’s own page states it. I owned the whole stack, SwiftUI, Node and MongoDB, and wrote most of the adapters by directing AI coding agents the way a lead runs a small team.</p>
+            <p>Danbi and I both tried to sublease our apartments and hated it: a group chat, no contract, no way to know if the other person was real. So we built the app we wanted and launched it on the App Store in September 2025.</p>
+            <p>I built the whole stack (SwiftUI, Node, MongoDB) and the AI agent on Claude’s API. Under the search sits an index I built that reads prices straight from property managers’ own websites: 3,700+ buildings in five metros.</p>
             <ul>
-              <li>1,000+ registered students, doubled in six months.</li>
-              <li>Ten campus Instagram accounts run by AI agents we built, about 6,000 followers, nothing spent on ads.</li>
-              <li>A two-person team with no employees. Numbers as of August 2026.</li>
+              <li>1,000+ registered students by August 2026, doubled in six months.</li>
+              <li>Ten campus Instagram accounts run by AI agents we built: about 6,000 followers, nothing spent on ads.</li>
             </ul>
             <p class="links"><a href="https://www.app.westapt.com/">Apateu on the web</a><a href="https://apps.apple.com/us/app/apateu/id6745530032">Apateu on the App Store</a></p>
           </div>
@@ -120,36 +117,60 @@
       <details class="item" id="moonlight">
         <summary>
           <img class="thumb" src="assets/moonlight.jpg" width="1040" height="1040" alt="Two real screens from the Moonlight iPhone app: a day’s Timeline and a week of sleep in Insights" loading="lazy">
-          <span class="txt"><strong class="t">Moonlight</strong><span class="role">AI engineer / full-stack software engineer · San Diego · 2026</span><span class="blurb">An iPhone app for parents of children with autism. A parent records an observation with a photo or a voice note, and the app turns weeks of records into charts a doctor can read: sleep, bowel health, therapy sessions and food, and which things tend to occur together.</span></span>
+          <span class="txt"><strong class="t">Moonlight</strong><span class="role">AI engineer / full-stack software engineer · San Diego · 2026</span><span class="blurb">An iPhone app for parents of children with autism. Parents log the day with a photo or a voice note, and the app turns weeks of notes into charts a doctor can read.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
           <figure class="bleed gallery-fig">
             <div class="gallery" data-gallery="Moonlight">
-              <a class="shot" href="assets/moonlight-1.jpg" data-caption="Timeline for one day. Under the teacher’s note, the AI line lists what it read from the photo and flags anything worth watching. Place names and the photo are blurred."><img src="assets/moonlight-1-sm.jpg" width="720" height="1561" alt="Moonlight Timeline for September 22: a teacher’s note with an AI summary, two bathroom records, and a night’s sleep" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
-              <a class="shot" href="assets/moonlight-2.jpg" data-caption="Insights for a week: bowel movements on the Bristol scale against the ideal 3–4 band, and intervention sessions with the day’s average rating."><img src="assets/moonlight-2-sm.jpg" width="720" height="1561" alt="Moonlight Insights for September 6 to 12: a Bristol stool type chart and an intervention sessions chart" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
-              <a class="shot" href="assets/moonlight-3.jpg" data-caption="Sleep for the same week: bedtime, sleep onset and waking each night, and hours asleep against an 8–10 hour goal."><img src="assets/moonlight-3-sm.jpg" width="720" height="1561" alt="Moonlight Insights sleep section: a sleep rhythm chart and hours asleep per day for September 6 to 12" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/moonlight-1.jpg" data-caption="One day on the Timeline, with the AI’s note under an entry. Place names and the photo are blurred."><img src="assets/moonlight-1-sm.jpg" width="720" height="1561" alt="Moonlight Timeline for one day, with an AI note under an entry" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/moonlight-2.jpg" data-caption="A week of Insights. Every chart is computed from the logged entries, never by the model."><img src="assets/moonlight-2-sm.jpg" width="720" height="1561" alt="Moonlight weekly Insights charts" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/moonlight-3.jpg" data-caption="Sleep across the same week."><img src="assets/moonlight-3-sm.jpg" width="720" height="1561" alt="Moonlight sleep charts for one week" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
             </div>
             <figcaption>Real screens from the app in use, September 2026, with place names and a photographed note blurred. Click any screen to zoom in.</figcaption>
           </figure>
           <div class="prose">
-            <p>Parents of a child who may not have the words to say how they feel keep track of a great deal, and are then asked to recall weeks of it at a short appointment. Moonlight is one place to record structured daily observations across built-in and custom categories, and it looks for patterns across them over weeks.</p>
-            <p>The rule I held to was that the language model may suggest a pattern, and must report the times it did not hold, but every number in a report comes from a database counter, never from the model. The app gives no medical advice: if the model drafts a line that reads like a treatment change, code replaces it with a fixed instruction to keep recording and consult a doctor. Names are redacted before every prompt, and the whole app works in Chinese and English.</p>
-            <p>Since launch the app has changed in weekly rounds driven by the family. The latest reworked Insights: any date range now reads as sections a clinician would recognize, with sleep, bowel health on the Bristol scale, intervention sessions and nutrition, every chart computed from the records, and the whole report exports to a PDF for the next appointment.</p>
-            <p>I built it end to end: requirements gathered from parents with no technical background, a proposal they approved, weekly check-ins, one storage design reversed when their security checklist made a server necessary, and version one in production in August 2026 after a four-week build. SwiftUI, Swift Charts, Node, MongoDB, OpenAI and AWS.</p>
+            <p>Parents of a child who can’t always say how they feel keep track of a lot, then get asked to remember weeks of it in a short appointment. Moonlight gives them one place to log the day, and it finds patterns across weeks.</p>
+            <p>One rule shaped the design: the language model may suggest a pattern, but every number in a report comes from the database, never from the model. The app gives no medical advice. If the model drafts something that sounds like advice, code swaps it for a note to ask a doctor.</p>
+            <p>I built it end to end, from requirements with the family to version one in production in August 2026, after a four-week build. Since then the family has driven a new round of changes almost every week. SwiftUI, Node, MongoDB, OpenAI and AWS.</p>
           </div>
         </div>
       </details>
     </section>
 
     <section class="group" aria-labelledby="g-hw">
-      <h3 id="g-hw">Electrical engineering: putting AI on hardware</h3>
-      <p class="lead">Everything above runs on a server or a phone. I want to learn what it takes for AI to work when it has motors, sensors and a battery, and a mistake has physical consequences.</p>
+      <h3 id="g-hw">Putting AI on hardware</h3>
+      <p class="lead">Everything above runs on a server or a phone. I want to learn what it takes for AI to work in the physical world, on a small computer with a camera.</p>
+
+      <details class="item" id="vision">
+        <summary>
+          <img class="thumb" src="assets/vision.jpg" width="1040" height="1040" alt="Bar chart: on a public action benchmark, the starting point scores 0.13, a large teacher model 0.26, and my small model 0.34" loading="lazy">
+          <span class="txt"><strong class="t">A home robot’s eyes</strong><span class="role">AI engineer · since September 2026 · early prototype</span><span class="blurb">The long-term goal is a home robot that helps families. First it needs eyes: a small camera computer that understands, second by second, what each person in the room is doing, while the video stays in the home.</span></span>
+          <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </summary>
+        <div class="more">
+          <div class="prose">
+            <p>It’s early, so I’ll keep the details short. This is how I’m building it:</p>
+            <ul>
+              <li><strong>Public video first.</strong> The model learns everyday actions (sitting, eating, reading, playing) from large public video datasets before it ever sees a home.</li>
+              <li><strong>People, not just pixels.</strong> The camera finds each person, works out their pose and follows them over time. Once a second it sums up each person, and a small transformer reads the last few seconds to decide what they are doing.</li>
+              <li><strong>A big teacher for a small student.</strong> A large vision-language model scores clips offline, and my small model learns from it and from human labels. On the benchmark, the student ended up beating its teacher.</li>
+              <li><strong>Built for a tiny computer.</strong> It’s designed for a Raspberry Pi 5 with an AI chip. The model I trained needs a few milliseconds of one processor core per person each second.</li>
+              <li><strong>Measured honestly.</strong> Each version is scored once, on clips it never trained on, and a model stays only if it beats a simpler one.</li>
+            </ul>
+            <figure class="figure" style="max-width:440px">
+              <img src="assets/vision.jpg" width="1040" height="1040" alt="Bar chart: on a public action benchmark, the starting point scores 0.13, a large teacher model 0.26, and my small model 0.34" loading="lazy">
+              <figcaption>The AVA benchmark, 31 everyday actions, scored once with the true person boxes given. With the camera’s own person detection the scores are 0.10, 0.19 and 0.27.</figcaption>
+            </figure>
+            <p>Right now the pipeline runs on my laptop; next it moves onto the Pi.</p>
+          </div>
+        </div>
+      </details>
 
       <details class="item" id="drone">
         <summary>
           <img class="thumb" src="assets/drone.jpg" width="1040" height="1040" alt="3D model of the X650 delivery drone flying among posts and a tree, with its camera’s depth grid tinted near to far and lidar returns scattered around it" loading="lazy">
-          <span class="txt"><strong class="t">An autonomous delivery drone</strong><span class="role">AI engineer · forward-deployed, for a client · summer 2026 to present</span><span class="blurb">A drone that flies a one-kilogram package from A to B and back around trees, poles and buildings, reading a lidar and a camera together. A learned pilot does the flying; fixed safety rules it cannot override have the last word. So far it flies only in simulation: the aircraft is not built yet.</span></span>
+          <span class="txt"><strong class="t">An autonomous delivery drone</strong><span class="role">A fun side project · since summer 2026</span><span class="blurb">Just for fun: software for a drone that carries a package from A to B around trees, poles and buildings. A pilot trained with reinforcement learning does the flying, and simple safety rules it can’t override have the last word. So far it flies only in simulation.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
@@ -171,58 +192,13 @@
                 <p class="stage-toast" aria-hidden="true">Hold ⌘ or Ctrl to zoom</p>
               </div>
             </div>
-            <figcaption>The aircraft as we will build it, drawn to scale in metres from the parts list: Holybro X650 V2 with 15-inch props, Pixhawk 6C Mini, Raspberry Pi 5, a Unitree L2 lidar hanging dome-down under the nose, the Raspberry Pi AI Camera (IMX500) on a pitch gimbal at the tip of a nose boom, single-beam rangefinders pointing down and up, and a one-kilogram package. The lidar sees from straight down to 6° above the horizon, so the tree crown ahead is seen only by the camera. The course is shrunk to fit, and the sensor effects are an illustration, not recorded data.</figcaption>
+            <figcaption>The drone drawn to scale from its parts list, among posts and a tree, with the camera’s depth readings tinted near to far and the lidar’s returns around it. An illustration, not recorded data.</figcaption>
           </figure>
 
           <div class="prose">
-            <h4>The mission</h4>
-            <p>Fly a package from A to B around real obstacles, land at B, release it, and fly home the same way. That is the part a waypoint autopilot cannot do: it follows a line, and it cannot see a tree.</p>
-            <p>The design splits the work in three. ArduPilot on the Pixhawk is the vehicle: it keeps the aircraft stable, tracks the speed it is asked for, takes off, touches down and runs the failsafes. A learned pilot on the Raspberry Pi chooses the path and the speed, sending four commands ten times a second: forward, sideways and vertical speed, and turn rate. Between them sits a guardian, plain rules rather than anything learned, which the pilot cannot override. If the Pi crashes or goes quiet, the autopilot brakes, climbs and flies home.</p>
-
-            <h4>What it sees</h4>
-            <p>A camera tells you what things are and sees far in daylight; a lidar measures where they are, in any light. The pilot gets both. The lidar is a Unitree L2 hung upside down under the nose, so it sees from straight down to 6° above the horizon, all around, out to about 15 m on dark surfaces. Above that it is blind, which is why the camera sits on a boom in front of it, looking ahead and up.</p>
-            <p>The camera is the Raspberry Pi AI Camera, whose Sony IMX500 sensor runs a small neural network on the chip itself. The plan is for it to turn each image into distances with ZipDepth, an open depth model, which I converted and squeezed into 7.5 of the chip’s 8 MB; its speed on the real camera is the next measurement. The pilot reads a coarse 12 × 16 grid of those distances, which looks the same in simulation as on the aircraft. Raw pixels would not.</p>
-            <p>Speed follows what it can see. Like a careful human pilot, it flies only as fast as it can stop within the distance the lidar has confirmed clear: 6 m/s at most, slower near obstacles. Anything the sensors cannot see clearly counts as blocked, never as clear.</p>
-
-            <h4>How it learns</h4>
-            <p>Training runs in a simulator I built in PyTorch rather than in a game engine. The obstacle courses are simple solids, so every lidar ray, camera distance and collision can be computed exactly, for thousands of aircraft at once on one GPU: about 10,000 simulated steps a second, or 17 minutes of flight every second. The courses run from open fields through posts, trees and buildings to courtyards and dead-end alleys, with ceilings low enough that the pilot has to go around obstacles, not over them.</p>
-            <p>The pilot is one small network trained with PPO, a reinforcement-learning method, and it has to beat a hand-written pilot with the same sensors and the same guardian before it goes near an aircraft. It is not there yet. After two hours of training on a rented GPU it reached B on 225 of 240 courses it had never seen, with one collision, and it was faster wherever both arrived; the hand-written pilot still arrives more often, 235 of 240. The learned pilot also found two ways to crash that the guardian’s rules had missed and the hand-written pilot never tried. After a redesign, 9,840 simulated flights, including seven pilots written to misbehave, ended without a crash.</p>
-            <p>Before any of this, our first flight code carried a 2.7 km route on three simulated airframes, and a fault lab killed a motor, jammed the GPS and faked a dying battery to see what the autopilot would do.</p>
-
-            <h4>Later: choosing where to land</h4>
-            <p>For the first demo, B is an easy spot chosen in advance and the autopilot simply lands there. Later, the same sensors will choose a spot on unmarked ground that is firm, level, clear of people and big enough, or decline and fly back. For that we tested pretrained segmentation models instead of training our own and chose <a href="https://github.com/markus-42/SafeLand">SafeLand</a>, a SegFormer model trained on aerial images that labels 23 classes, including road, grass, water, obstacles and people. At 47 million parameters it is far too big for the camera chip, so it runs on the Pi’s processor, where it currently takes about 12 seconds per image. That was measured on an underpowered supply, so the landing work waits until it is measured again.</p>
-          </div>
-
-          <figure class="bleed-md compare-fig" data-compare>
-            <div class="compare-tabs" role="tablist" aria-label="Simulated scene">
-              <button type="button" role="tab" aria-selected="true" data-rgb="assets/safeland-obstacles-rgb.jpg" data-lab="assets/safeland-obstacles-labels.jpg" data-cap="Three boxes, 12 to 45 cm tall, on level paving. SafeLand marks them as obstacles (yellow) and the paving as road (purple).">Obstacles</button>
-              <button type="button" role="tab" aria-selected="false" data-rgb="assets/safeland-person-rgb.jpg" data-lab="assets/safeland-person-labels.jpg" data-cap="A person walks into the landing area. SafeLand marks them in magenta.">A person walks in</button>
-              <button type="button" role="tab" aria-selected="false" data-rgb="assets/safeland-step-rgb.jpg" data-lab="assets/safeland-step-labels.jpg" data-cap="A 25 cm step through the paving. SafeLand calls half of it water: it judges appearance, not height. This is why the lidar, not the camera, decides whether ground is level.">A 25 cm step</button>
-            </div>
-            <div class="compare" style="--pos:50%">
-              <img class="c-a" src="assets/safeland-obstacles-rgb.jpg" width="640" height="480" alt="Rendered camera frame from the simulator" loading="lazy">
-              <img class="c-b" src="assets/safeland-obstacles-labels.jpg" width="640" height="480" alt="The same frame with SafeLand’s labels blended over it" loading="lazy">
-              <span class="c-line" aria-hidden="true"><span class="c-knob"></span></span>
-              <span class="c-tag c-tag-a" aria-hidden="true">What the camera sees</span>
-              <span class="c-tag c-tag-b" aria-hidden="true">What SafeLand labels</span>
-              <input class="c-range" type="range" min="0" max="100" value="50" step="0.5" aria-label="Slide to compare the camera frame with SafeLand’s labels">
-              <button class="c-zoom" type="button" aria-label="Open both images full screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5 9 7M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            </div>
-            <ul class="compare-legend" aria-label="SafeLand label colours">
-              <li><i style="--c:#a667a9"></i>Road</li>
-              <li><i style="--c:#e3e25e"></i>Obstacle</li>
-              <li><i style="--c:#e670e8"></i>Person</li>
-              <li><i style="--c:#6667e8"></i>Water</li>
-            </ul>
-            <figcaption><span class="c-cap">Three boxes, 12 to 45 cm tall, on level paving. SafeLand marks them as obstacles (yellow) and the paving as road (purple).</span> Frames rendered in NVIDIA Isaac Sim and labelled by the released SafeLand model, September 22, 2026. Drag the handle to compare.</figcaption>
-          </figure>
-
-          <div class="prose">
-            <ul>
-              <li>Holybro X650 V2 airframe with 15-inch propellers; a one-kilogram package released by a servo latch, only after a supervised check on the ground.</li>
-              <li>One Unitree L2 lidar rather than two Livox Mid-360S: hung upside down it also sees the ground straight below, and it costs $419 instead of $1,893.</li>
-              <li>The Pi and the AI Camera run on the bench; the airframe and the lidar are not bought or built yet, and nothing has flown.</li>
-            </ul>
+            <p>I wrote a simulator in PyTorch that flies 2,000 virtual drones at once on one GPU, and trained the pilot in it with PPO, a reinforcement-learning method. After two hours of training it reached the goal on 225 of 240 courses it had never seen, with one crash. A hand-written pilot still does a bit better (235), so mine has more to learn.</p>
+            <p>The safety rules sit between the pilot and the drone: never fly faster than you can stop, and treat anything the sensors can’t see as blocked. When the pilot found two ways to crash that the rules had missed, I fixed the rules and tested them on 9,840 simulated flights without a crash. The one crash in the latest run is next on my list.</p>
+            <p>Nothing is built or flown yet. Only the Raspberry Pi and the camera exist so far; the rest is still a parts list.</p>
           </div>
         </div>
       </details>
@@ -245,7 +221,7 @@
     </ul>
 
     <footer>
-      <p>Photo of Keck Hospital of USC by Patrick Davison, via <a href="https://en.wikipedia.org/wiki/File:USCUH.jpg">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, cropped. Moonlight screens are real, with place names and a photo blurred. The drone is a to-scale 3D model built from the project’s parts list, not a photograph. Simulator frames are labelled by <a href="https://github.com/markus-42/SafeLand">SafeLand</a> (CC BY-NC-SA 4.0).</p>
+      <p>Photo of Keck Hospital of USC by Patrick Davison, via <a href="https://en.wikipedia.org/wiki/File:USCUH.jpg">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, cropped. Moonlight screens are real, with place names and a photo blurred. The benchmark chart shows measured results. The drone is a to-scale 3D model built from its parts list, not a photograph.</p>
       <p>© 2026 James Tian</p>
     </footer>
   </main>
