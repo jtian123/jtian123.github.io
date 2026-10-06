@@ -47,7 +47,7 @@
     <section class="intro" aria-label="About">
       <div>
         <h1 class="sr-only">About</h1>
-        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system. I also build AI products. I was the founding engineer of <a href="https://www.app.westapt.com/">Apateu</a>, a student-housing app with an AI search engine, and I built <a href="#moonlight">Moonlight</a>, an iPhone app for parents of children with autism. Now I’m teaching a small camera to understand what people are doing, the first step toward a <a href="#vision">home robot</a>. For fun, I’m also writing the software for a <a href="#drone">delivery drone</a>.</p>
+        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system. I also build AI products. I was the founding engineer of <a href="https://www.app.westapt.com/">Apateu</a>, a student-housing app with an AI search engine, and I built <a href="#moonlight">Moonlight</a>, an iPhone app for parents of children with autism. Now I’m building the vision system for a <a href="#vision">home robot</a>: a small camera that understands what people are doing. For fun, I’m also writing the software for a <a href="#drone">delivery drone</a>.</p>
         <p>I grew up in China and studied statistics at Southeast University (东南大学) in Nanjing, then mathematics at Utrecht University and analytics at USC.</p>
       </div>
       <img class="portrait" src="assets/james-640.jpg" width="457" height="640" alt="James Tian" fetchpriority="high">
@@ -140,19 +140,19 @@
 
     <section class="group" aria-labelledby="g-hw">
       <h3 id="g-hw">Putting AI on hardware</h3>
-      <p class="lead">Everything above runs on a server or a phone. I want to learn what it takes for AI to work in the physical world, on a small computer with a camera.</p>
+      <p class="lead">AI that works in the physical world: vision models that run on a small computer with a camera, and a drone pilot trained with reinforcement learning.</p>
 
       <details class="item" id="vision">
         <summary>
           <img class="thumb" src="assets/vision-hw.jpg" width="1040" height="1040" alt="A Raspberry Pi 5 with its cooler and an AI accelerator board stacked on top, and the Raspberry Pi AI Camera on a ribbon cable in front" loading="lazy">
-          <span class="txt"><strong class="t">A home robot’s eyes</strong><span class="role">AI engineer · since September 2026 · early prototype</span><span class="blurb">The long-term goal is a home robot that helps families of children with autism. First it needs eyes: a small camera computer that understands, second by second, what each person in the room is doing, while the video stays in the home.</span></span>
+          <span class="txt"><strong class="t">A home robot’s eyes</strong><span class="role">AI engineer · since September 2026</span><span class="blurb">A home robot that helps families of children with autism. I’m building its eyes: a small camera computer that understands, second by second, what each person in the room is doing, while the video stays in the home.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
           <div class="prose">
-            <p>It’s early, so I’ll keep the details short. This is how I’m building it:</p>
+            <p>How it works:</p>
             <ul>
-              <li><strong>Public video first.</strong> The model learns everyday actions (sitting, eating, reading, playing) from large public video datasets before it ever sees a home.</li>
+              <li><strong>Public video first.</strong> The model learned everyday actions (sitting, eating, reading, playing) from large public video datasets.</li>
               <li><strong>People, not just pixels.</strong> The camera finds each person, works out their pose and follows them over time. Once a second it sums up each person, and a small transformer reads the last few seconds to decide what they are doing.</li>
               <li><strong>A big teacher for a small student.</strong> A large vision-language model scores clips offline, and my small model learns from it and from human labels. On the benchmark, the student ended up beating its teacher.</li>
               <li><strong>Built for a tiny computer.</strong> It’s designed for a Raspberry Pi 5 with an AI chip. The model I trained needs a few milliseconds of one processor core per person each second.</li>
@@ -162,7 +162,6 @@
               <img src="assets/vision.jpg" width="1040" height="1040" alt="Bar chart: on a public action benchmark, the starting point scores 0.13, a large teacher model 0.26, and my small model 0.34" loading="lazy">
               <figcaption>The AVA benchmark, 31 everyday actions, scored once with the true person boxes given. With the camera’s own person detection the scores are 0.10, 0.19 and 0.27.</figcaption>
             </figure>
-            <p>Right now the pipeline runs on my laptop; next it moves onto the Pi.</p>
           </div>
         </div>
       </details>
@@ -170,7 +169,7 @@
       <details class="item" id="drone">
         <summary>
           <img class="thumb" src="assets/drone.jpg" width="1040" height="1040" alt="3D model of the X650 delivery drone flying among posts and a tree, with its camera’s depth grid tinted near to far and lidar returns scattered around it" loading="lazy">
-          <span class="txt"><strong class="t">An autonomous delivery drone</strong><span class="role">A fun side project · since summer 2026</span><span class="blurb">Just for fun: software for a drone that carries a package from A to B around trees, poles and buildings. A pilot trained with reinforcement learning does the flying, and simple safety rules it can’t override have the last word. So far it flies only in simulation.</span></span>
+          <span class="txt"><strong class="t">An autonomous delivery drone</strong><span class="role">A fun side project · since summer 2026</span><span class="blurb">Just for fun: software for a drone that carries a package from A to B around trees, poles and buildings. A pilot trained with reinforcement learning does the flying, and simple safety rules it can’t override have the last word. It flies in simulation; the aircraft itself isn’t built.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
@@ -196,9 +195,9 @@
           </figure>
 
           <div class="prose">
-            <p>I wrote a simulator in PyTorch that flies 2,000 virtual drones at once on one GPU, and trained the pilot in it with PPO, a reinforcement-learning method. After two hours of training it reached the goal on 225 of 240 courses it had never seen, with one crash. A hand-written pilot still does a bit better (235), so mine has more to learn.</p>
-            <p>The safety rules sit between the pilot and the drone: never fly faster than you can stop, and treat anything the sensors can’t see as blocked. When the pilot found two ways to crash that the rules had missed, I fixed the rules and tested them on 9,840 simulated flights without a crash. The one crash in the latest run is next on my list.</p>
-            <p>Nothing is built or flown yet. Only the Raspberry Pi and the camera exist so far; the rest is still a parts list.</p>
+            <p>I wrote a simulator in PyTorch that flies 2,000 virtual drones at once on one GPU, and trained the pilot in it with PPO, a reinforcement-learning method.</p>
+            <p>The safety rules sit between the pilot and the drone: never fly faster than you can stop, and treat anything the sensors can’t see as blocked. When the pilot found two ways to crash that the rules had missed, I fixed the rules and tested them on 9,840 simulated flights without a crash.</p>
+            <p>After two hours of training, the pilot reached the goal on 225 of 240 courses it had never seen, with one crash.</p>
           </div>
         </div>
       </details>
