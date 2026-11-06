@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>James Tian</title>
-  <meta name="description" content="James Tian is a data scientist at the Keck School of Medicine of USC and an AI engineer. He was the founding engineer of Apateu, built Moonlight for parents of children with autism, and is building the vision system for a home robot.">
+  <meta name="description" content="James Tian is a data scientist at the Keck School of Medicine of USC and an AI engineer. He was the founding engineer of Apateu, built Moonlight for parents of children with autism, and is building a home robot.">
   <meta name="author" content="James Tian">
   <meta name="theme-color" content="#faf9f5">
   <meta property="og:type" content="website">
   <meta property="og:title" content="James Tian">
-  <meta property="og:description" content="Data scientist at the Keck School of Medicine of USC. AI engineer: Apateu, Moonlight and the eyes of a home robot. Los Angeles.">
+  <meta property="og:description" content="Data scientist at the Keck School of Medicine of USC. AI engineer: Apateu, Moonlight and a home robot. Los Angeles.">
   <meta property="og:url" content="https://jtian123.github.io/">
   <meta property="og:image" content="https://jtian123.github.io/assets/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -47,7 +47,7 @@
     <section class="intro" aria-label="About">
       <div>
         <h1 class="sr-only">About</h1>
-        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system. I also build AI products. I was the founding engineer of <a href="https://www.app.westapt.com/">Apateu</a>, a student-housing app with an AI search engine, and I built <a href="#moonlight">Moonlight</a>, an iPhone app for parents of children with autism. Now I’m building the vision system for a <a href="#vision">home robot</a>: a small camera that understands what people are doing. For fun, I’m also writing the software for a <a href="#drone">delivery drone</a>.</p>
+        <p>I live in Los Angeles. I’m a data scientist at the Keck School of Medicine of USC, where I work on NIH-funded studies of the brain, genes and the immune system. I also build AI products. I was the founding engineer of <a href="https://www.app.westapt.com/">Apateu</a>, a student-housing app with an AI search engine, and I built <a href="#moonlight">Moonlight</a>, an iPhone app for parents of children with autism. Now I’m building a <a href="#vision">home robot</a>: vision models that run on the robot itself, cloud models that teach them, and a 3D-printed body. For fun, I’m also training a <a href="#drone">drone pilot</a> with reinforcement learning.</p>
         <p>I grew up in China and studied statistics at Southeast University (东南大学) in Nanjing, then mathematics at Utrecht University and analytics at USC.</p>
       </div>
       <img class="portrait" src="assets/james-640.jpg" width="457" height="640" alt="James Tian" fetchpriority="high">
@@ -89,18 +89,19 @@
 
       <details class="item" id="apateu">
         <summary>
-          <img class="thumb" src="assets/apateu.jpg" width="1040" height="1040" alt="Two full screens from the Apateu iPhone app: the sublease listings feed and the AI housing agent landing" loading="lazy">
+          <img class="thumb" src="assets/apateu.jpg" width="1040" height="1040" alt="Two screens from the Apateu iPhone app: the sublease feed and the AI housing agent" loading="lazy">
           <span class="txt"><strong class="t">Apateu</strong><span class="role">Founding engineer · with Danbi Jang · 2025 to September 2026</span><span class="blurb">A student-housing app. Students sublease to each other with a lease signed in the app, and an AI agent answers “a 2-bed near USC under $1,400” with real buildings and today’s prices.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
           <figure class="bleed gallery-fig">
-            <div class="gallery" data-gallery="Apateu">
-              <a class="shot" href="assets/apateu-1.jpg" data-caption="The sublease feed: listings from students, priced per month."><img src="assets/apateu-1.jpg" width="600" height="1300" alt="Apateu listings feed: sublease cards with monthly prices in Seattle and Los Angeles" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
-              <a class="shot" href="assets/apateu-2.jpg" data-caption="The AI housing agent: one search across student subleases and the apartments Apateu indexes."><img src="assets/apateu-2.jpg" width="600" height="1300" alt="The AI housing agent home screen with the prompt box and campus tiles" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
-              <a class="shot" href="assets/apateu-3.jpg" data-caption="Step 3 of the lease builder: deposit-refund and late-payment terms, signed in the app."><img src="assets/apateu-3.jpg" width="600" height="1300" alt="Step 3 of the lease builder: deposit-refund and late-payment presets" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+            <div class="gallery four" data-gallery="Apateu">
+              <a class="shot" href="assets/apateu-1.jpg" data-caption="The AI housing agent: describe the place in plain words and it searches apartments and student sublets in five metros."><img src="assets/apateu-1.jpg" width="600" height="1300" alt="The Apateu housing agent home screen: “Describe it. Apateu finds it.” with a prompt box, example searches and city tiles" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/apateu-2.jpg" data-caption="The sublease feed: rooms students are subleasing, priced per month, with a map view."><img src="assets/apateu-2.jpg" width="600" height="1300" alt="Apateu sublease feed: private-room listings in Seattle with monthly prices" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/apateu-3.jpg" data-caption="Chats between hosts and renters. A green tag shows when both sides have agreed to the terms. The other user’s photo is blurred."><img src="assets/apateu-3.jpg" width="600" height="1300" alt="Apateu chat list with a “Terms agreed” tag on a sublease conversation" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/apateu-4.jpg" data-caption="Agreements: the host fills in the terms and signs, then the renter signs. Fixed wording, not written by AI, and locked once both sign."><img src="assets/apateu-4.jpg" width="600" height="1300" alt="The “How agreements work” sheet: start in chat, host signs first, fixed wording, stored until the lease ends" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
             </div>
-            <figcaption>Screens from the iPhone app, July 2026: the sublease feed, the housing agent and the lease builder. Click any screen to zoom in.</figcaption>
+            <figcaption>Screens from the iPhone app, November 2026: the housing agent, the sublease feed, chats and signed agreements. Click any screen to zoom in.</figcaption>
           </figure>
           <div class="prose">
             <p>Danbi and I both tried to sublease our apartments and hated it: a group chat, no contract, no way to know if the other person was real. So we built the app we wanted and launched it on the App Store in September 2025.</p>
@@ -140,28 +141,102 @@
 
     <section class="group" aria-labelledby="g-hw">
       <h3 id="g-hw">Putting AI on hardware</h3>
-      <p class="lead">AI that works in the physical world: vision models that run on a small computer with a camera, and a drone pilot trained with reinforcement learning.</p>
+      <p class="lead">AI that works in the physical world: a home robot I’m building end to end, from model training to 3D printing, and a drone pilot trained with reinforcement learning.</p>
 
       <details class="item" id="vision">
         <summary>
-          <img class="thumb" src="assets/vision-hw.jpg" width="1040" height="1040" alt="A Raspberry Pi 5 with its cooler and an AI accelerator board stacked on top, and the Raspberry Pi AI Camera on a ribbon cable in front" loading="lazy">
-          <span class="txt"><strong class="t">A home robot’s eyes</strong><span class="role">AI engineer · since summer 2026</span><span class="blurb">A home robot that helps families of children with autism. I’m building its eyes: a small camera computer that understands, second by second, what each person in the room is doing, while the video stays in the home.</span></span>
+          <img class="thumb" src="assets/robot.jpg" width="1040" height="1040" alt="Photo: a Raspberry Pi 5 with the AI HAT+ (Hailo-8, 26 TOPS) on top, sitting in an orange 3D-printed tray with the camera ribbon attached" loading="lazy">
+          <span class="txt"><strong class="t">A home robot</strong><span class="role">AI engineer · since summer 2026 · now testing in my own home</span><span class="blurb">An AI agent with a body that lives in the home, built first for families of children with autism. I build every layer: the vision models that run on the robot, the cloud models that teach them, the memory an agent reads, and the 3D-printed body.</span></span>
           <span class="chev"><span class="o">More</span><span class="c">Less</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
         </summary>
         <div class="more">
+          <figure class="bleed gallery-fig">
+            <div class="gallery four" data-gallery="The robot">
+              <a class="shot" href="assets/robot-print.jpg" data-caption="Case parts straight off the Bambu Lab printer."><img src="assets/robot-print.jpg" width="1040" height="1040" alt="Orange 3D-printed case parts laid out on the printer's build plate" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/robot-board.jpg" data-caption="Raspberry Pi 5 and the AI HAT+ in the printed tray, camera ribbon attached."><img src="assets/robot-board.jpg" width="1040" height="1040" alt="Raspberry Pi 5 with the AI HAT+ mounted in the orange printed tray" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/robot-case.jpg" data-caption="The closed case, vents on top."><img src="assets/robot-case.jpg" width="1040" height="1040" alt="The finished orange printed case with a black back panel" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+              <a class="shot" href="assets/robot-mics.jpg" data-caption="The four-microphone array that hears which person in view is speaking."><img src="assets/robot-mics.jpg" width="1040" height="1040" alt="A round black circuit board: the four-microphone array" loading="lazy"><span class="zoom" aria-hidden="true"></span></a>
+            </div>
+            <figcaption>Real photos of the build, November 2026. Click any photo to zoom in.</figcaption>
+          </figure>
+
+          <h4 class="bleed-md flow-h">How it works</h4>
+          <div class="flow bleed-md" role="list">
+            <div class="step" role="listitem">
+              <svg class="ic" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="8" width="26" height="18" rx="4"/><circle cx="16" cy="17" r="5.5"/><circle cx="16" cy="17" r="2"/><path d="M11 8l2-3h6l2 3"/></svg>
+              <strong>Sense</strong>
+              <span>Two cameras (day, and infrared for the night), a four-mic array</span>
+            </div>
+            <div class="step dev" role="listitem">
+              <svg class="ic" viewBox="0 0 32 32" aria-hidden="true"><rect x="8" y="8" width="16" height="16" rx="2"/><rect x="12" y="12" width="8" height="8" rx="1"/><path d="M12 4v4M16 4v4M20 4v4M12 24v4M16 24v4M20 24v4M4 12h4M4 16h4M4 20h4M24 12h4M24 16h4M24 20h4"/></svg>
+              <strong>See, on the robot</strong>
+              <span>Find people, pets and objects, read each body’s pose, follow everyone, and decide what they’re doing</span>
+            </div>
+            <div class="step dev" role="listitem">
+              <svg class="ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 5h15l4 4v18H7z"/><path d="M11 13h11M11 17h11M11 21h7"/></svg>
+              <strong>Remember, on the robot</strong>
+              <span>A diary of who did what, when, kept in encrypted memory that fades with age</span>
+            </div>
+            <div class="step cloud" role="listitem">
+              <svg class="ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 22a5 5 0 0 1-.6-10A7 7 0 0 1 22 10.5 5.5 5.5 0 0 1 23 22z"/><path d="M12 26h8"/></svg>
+              <strong>Think, in the cloud</strong>
+              <span>Large models name what changed and teach the robot; an LLM agent (in design) will answer the family from its memory</span>
+            </div>
+          </div>
+          <p class="flow-note bleed-md"><span class="k dev"></span>Video is processed on the robot · <span class="k cloud"></span>only short moments it chooses go to the cloud</p>
+
           <div class="prose">
-            <p>How it works:</p>
-            <ul>
-              <li><strong>Public video first.</strong> The model learned everyday actions (sitting, eating, reading, playing) from large public video datasets.</li>
-              <li><strong>People, not just pixels.</strong> The camera finds each person, works out their pose and follows them over time. Once a second it sums up each person, and a small transformer reads the last few seconds to decide what they are doing.</li>
-              <li><strong>A big teacher for a small student.</strong> A large vision-language model scores clips offline, and my small model learns from it and from human labels. On the benchmark, the student ended up beating its teacher.</li>
-              <li><strong>Built for a tiny computer.</strong> It’s designed for a Raspberry Pi 5 with an AI chip. The model I trained needs a few milliseconds of one processor core per person each second.</li>
-              <li><strong>Measured honestly.</strong> Each version is scored once, on clips it never trained on, and a model stays only if it beats a simpler one.</li>
-            </ul>
-            <figure class="figure" style="max-width:440px">
-              <img src="assets/vision.jpg" width="1040" height="1040" alt="Bar chart: on a public action benchmark, the starting point scores 0.13, a large teacher model 0.26, and my small model 0.34" loading="lazy">
-              <figcaption>The AVA benchmark, 31 everyday actions, scored once with the true person boxes given. With the camera’s own person detection the scores are 0.10, 0.19 and 0.27.</figcaption>
+            <div class="cards">
+              <div class="card">
+                <h5><svg class="ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26V6M4 26h24"/><path d="M8 21l6-7 5 4 8-10"/></svg>Train and fine-tune</h5>
+                <p>Action models trained on public video, from films to real homes, on rented GPUs. I fine-tuned the detector to find people lying down, and a skeleton model to spot repetitive hand and body movements.</p>
+              </div>
+              <div class="card">
+                <h5><svg class="ic" viewBox="0 0 32 32" aria-hidden="true"><circle cx="10" cy="12" r="6"/><circle cx="24" cy="20" r="3.5"/><path d="M15 15l6 3"/></svg>Distill to the edge</h5>
+                <p>A large vision model, far too big for the robot, teaches a small student that runs on the AI chip in 8-bit. On the benchmark below, the student beat its teacher.</p>
+              </div>
+              <div class="card">
+                <h5><svg class="ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 8h20v13H6z"/><path d="M12 25h8M16 21v4"/><path d="M11 15l3 3 7-7"/></svg>Run on a palm-sized computer</h5>
+                <p>Four neural networks share one Hailo-8 chip in real time; the rest runs on the Pi’s CPU. It keeps working with no internet at all.</p>
+              </div>
+              <div class="card">
+                <h5><svg class="ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 7h22v14H14l-6 5v-5H5z"/><circle cx="11" cy="14" r="1.2"/><circle cx="16" cy="14" r="1.2"/><circle cx="21" cy="14" r="1.2"/></svg>Cloud teacher, agent brain</h5>
+                <p>When something changes, a few frames go to a vision-language model (Claude, or the open-source Qwen3.8 on DeepInfra). On held-out home videos, those looks made the diary’s answers 6 points more accurate.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="duo bleed-md">
+            <figure class="panel">
+              <p class="panel-t">The student beat its teacher</p>
+              <div class="bars" role="img" aria-label="Bar chart on the AVA benchmark: starting point 0.13, large teacher model 0.26, my small student model 0.34">
+                <div class="bar"><span class="lab">Starting point</span><span class="track"><i style="width:39%"></i></span><b>0.13</b></div>
+                <div class="bar"><span class="lab">Large teacher</span><span class="track"><i style="width:75%"></i></span><b>0.26</b></div>
+                <div class="bar me"><span class="lab">My student</span><span class="track"><i style="width:100%"></i></span><b>0.34</b></div>
+              </div>
+              <figcaption>AVA, 31 everyday actions, scored once on held-out video (mean average precision, true person boxes).</figcaption>
             </figure>
+            <figure class="panel">
+              <p class="panel-t">What the robot writes down</p>
+              <div class="diary" aria-label="Three example diary lines">
+                <p><time>14:02</time><span class="who">P1</span><span>sitting cross-legged on the floor by the sofa, stacking blocks</span></p>
+                <p><time>14:06</time><span class="who pet">cat</span><span>jumped onto the sofa</span></p>
+                <p><time>23:41</time><span class="who">bed</span><span>P2 sat up, then left the room</span></p>
+              </div>
+              <figcaption>An illustration of the diary format, not real data. Every line carries its confidence, and the robot writes “possibly” when it isn’t sure.</figcaption>
+            </figure>
+          </div>
+
+          <figure class="bleed-md split">
+            <img src="assets/robot-cad.jpg" width="1163" height="1122" alt="Exploded 3D view of the robot head: the shell, the speaker and screen, the Pi 5 stack, and the face with two camera eyes and infrared lights" loading="lazy">
+            <figcaption><strong>A body designed in code.</strong> Every part’s real size and position lives in a Python CAD script that checks for collisions, then prints on a Bambu Lab printer in PLA and PETG. This exploded view is an earlier head design; the photos above are the current case.</figcaption>
+          </figure>
+
+          <div class="prose">
+            <ul class="chips" aria-label="Tools">
+              <li>PyTorch</li><li>Runpod GPUs</li><li>Knowledge distillation</li><li>Fine-tuning</li><li>Transformers</li><li>Raspberry Pi 5</li><li>Hailo-8, 8-bit</li><li>ONNX</li><li>Claude API</li><li>Qwen3.8 on DeepInfra</li><li>Tool-calling agent</li><li>SQLite memory</li><li>Python CAD</li><li>Bambu Lab 3D printing</li>
+            </ul>
+            <p>It’s a prototype, now learning from real days and nights in my own home before any other family’s. Every model is scored once on data it never trained on, and kept only if it beats a simpler one.</p>
           </div>
         </div>
       </details>
@@ -220,7 +295,7 @@
     </ul>
 
     <footer>
-      <p>Photo of Keck Hospital of USC by Patrick Davison, via <a href="https://en.wikipedia.org/wiki/File:USCUH.jpg">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, cropped. Moonlight screens are real, with place names and a photo blurred. The Raspberry Pi picture is an AI-generated image of my setup; the benchmark chart shows measured results. The drone is a to-scale 3D model built from its parts list, not a photograph.</p>
+      <p>Photo of Keck Hospital of USC by Patrick Davison, via <a href="https://en.wikipedia.org/wiki/File:USCUH.jpg">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, cropped. Moonlight screens are real, with place names and a photo blurred. The robot photos are real, and its exploded view is rendered from my CAD model; the benchmark chart shows measured results. The drone is a to-scale 3D model built from its parts list, not a photograph.</p>
       <p>© 2026 James Tian</p>
     </footer>
   </main>
