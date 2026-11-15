@@ -1792,3 +1792,80 @@ footer a {
 .flow.bleed-md {
   margin-top: 0;
 }
+
+/* ------------------------------------------------------------------
+   Stormi section (2026-11-14): exploded view with labels, 3 frames,
+   five-step flow, small photo strip
+   ------------------------------------------------------------------ */
+
+.xv{position:relative;margin-top:8px;border-radius:22px;overflow:hidden;background:var(--ivory)}
+.xv[data-style=mono]{background:#f1d6a0}
+.xv img{display:block;width:100%;height:auto}
+.xv svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.xv svg path{fill:none;stroke:rgba(20,20,19,.5);stroke-width:1}
+.xv svg circle{fill:var(--clay);stroke:var(--ivory);stroke-width:1.5}
+.xv .xl{position:absolute;transform:translateY(-50%);font-family:var(--sans);width:21%;line-height:1.3}
+.xv .xl.l{right:73%;text-align:right}
+.xv .xl.r{left:76.5%}
+.xv .xl b{display:block;font-weight:600;font-size:14px;letter-spacing:-.01em;color:var(--ink)}
+.xv .xl i{font-style:normal;font-size:12.5px;color:var(--muted)}
+.xv .xtag{position:absolute;left:22px;top:18px;font:600 11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--clay-deep)}
+.xv .xdim{position:absolute;right:22px;bottom:16px;font:500 12px var(--sans);color:var(--muted)}
+.xv-list{display:none}
+.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.steps3 figure{margin:0;border-radius:16px;overflow:hidden;background:var(--ivory);position:relative}
+.steps3 img{display:block;width:100%;height:auto}
+.steps3 figcaption{position:absolute;left:16px;bottom:12px;font:500 12.5px var(--sans);color:var(--muted);margin:0;padding:0;text-align:left}
+.steps3 figcaption b{color:var(--ink);font-weight:600;margin-right:6px}
+.flow.five{grid-template-columns:repeat(5,minmax(0,1fr));gap:26px}
+.flow.five .step:not(:last-child)::after{right:-22px}
+.bench{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.bench img{width:100%;height:auto;border-radius:12px;display:block;filter:saturate(.82)}
+@media (max-width:760px){
+  .xv svg,.xv .xl,.xv .xtag{display:none}
+  .xv-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-family:var(--sans);font-size:13px;color:var(--muted);margin:12px 0 0;padding:0;list-style:none}
+  .xv-list b{color:var(--ink);font-weight:600;display:block}
+  .steps3{gap:6px}.steps3 figcaption{left:8px;bottom:6px;font-size:10.5px}.steps3 figure{border-radius:10px}
+  .flow.five{grid-template-columns:1fr}
+  .bench{grid-template-columns:1fr 1fr}
+}
+
+.more .diary.ask p{grid-template-columns:42px 54px 1fr}
+
+/* What Stormi watches for (2026-11-14): skeleton cards */
+.watch .wgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:#34302a;border-radius:18px;overflow:hidden}
+.wcard{margin:0;background:var(--night);padding:14px 12px 16px;display:flex;flex-direction:column}
+.wcard svg{display:block;width:100%;height:auto}
+.wcard line,.wcard path,.wcard polyline,.wcard ellipse{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.wcard .m line{stroke:#f0eee6;stroke-width:2.6}
+.wcard .g line{stroke:#e08a6c;stroke-width:2.2}
+.wcard .hd{fill:var(--night);stroke-width:2.4}
+.wcard .m .hd{stroke:#f0eee6}
+.wcard .g .hd{stroke:#e08a6c;fill:none}
+.wcard .j{fill:var(--clay);stroke:var(--night);stroke-width:.8}
+.wcard .fl{stroke:rgba(240,238,230,.22);stroke-width:1}
+.wcard .ar{stroke:var(--ochre);stroke-width:1.3}
+.wcard .tr{stroke:var(--ochre);stroke-width:1.3;opacity:.9}
+.more .wcard figcaption{font-family:var(--sans);font-size:12px;line-height:1.4;color:#a8a296;margin:10px 0 0;padding:0;text-align:left}
+.wcard figcaption b{display:block;font-weight:600;font-size:13.5px;color:#f0eee6;letter-spacing:-.01em;margin-bottom:2px}
+@media (max-width:900px){.watch .wgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:520px){.watch .wgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* What Stormi watches for, v2 (2026-11-14): synthetic-household frames with skeletons */
+.watch .mgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 14px}
+.mcard{margin:0}
+.mimg{position:relative;border-radius:14px;overflow:hidden;background:var(--night)}
+.mimg img{display:block;width:100%;height:auto}
+.mimg svg{position:absolute;inset:0;width:100%;height:100%}
+.mimg line,.mimg polyline,.mimg rect{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.mimg .m line{stroke:#fff;stroke-width:4}
+.mimg .m circle{fill:var(--clay);stroke:#fff;stroke-width:2}
+.mimg .g line{stroke:var(--ochre);stroke-width:3}
+.mimg .bx{stroke:rgba(255,255,255,.75);stroke-width:2;stroke-dasharray:7 7}
+.mimg .trbg{fill:rgba(22,20,15,.72);stroke:none}
+.mimg .tr{stroke:var(--ochre);stroke-width:3}
+.mimg .trl{font:500 17px var(--sans);fill:rgba(240,238,230,.75)}
+.mimg .mtag{position:absolute;left:12px;top:12px;font:500 12.5px ui-monospace,Menlo,monospace;color:#f0eee6;background:rgba(22,20,15,.78);padding:3px 8px;border-radius:6px}
+.more .mcard figcaption{font-family:var(--sans);font-size:12.5px;line-height:1.4;color:var(--muted);margin:10px 0 0;padding:0;text-align:left}
+.mcard figcaption b{display:block;font-weight:600;font-size:14.5px;color:var(--ink);letter-spacing:-.01em;margin-bottom:2px}
+@media (max-width:560px){.watch .mgrid{grid-template-columns:1fr}}
