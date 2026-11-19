@@ -1869,3 +1869,29 @@ footer a {
 .more .mcard figcaption{font-family:var(--sans);font-size:12.5px;line-height:1.4;color:var(--muted);margin:10px 0 0;padding:0;text-align:left}
 .mcard figcaption b{display:block;font-weight:600;font-size:14.5px;color:var(--ink);letter-spacing:-.01em;margin-bottom:2px}
 @media (max-width:560px){.watch .mgrid{grid-template-columns:1fr}}
+
+/* ---- Apateu: "People using it" block (numbers + sign-up chart) ---- */
+.usage{--clay-wash:rgba(217,119,87,.16);background:var(--ivory);border-radius:14px;padding:22px 22px 16px;margin:4px 0 20px;display:flex;flex-direction:column;gap:16px}
+.more .usage h4{font:600 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0}
+.usage .stats{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:18px;align-items:end}
+.usage .stat{min-width:0}
+.usage .stat .n{font:600 26px/1.1 var(--serif);font-variant-numeric:tabular-nums;letter-spacing:-.01em;color:var(--ink)}
+.usage .stat.hero .n{font-size:46px}
+.usage .stat .l{font:500 13px/1.35 var(--sans);color:var(--muted);margin-top:4px}
+.usage-chart{position:relative}
+.usage-chart svg{display:block;width:100%;height:auto;overflow:visible}
+.usage-chart text{font-family:var(--sans);font-weight:500;font-size:11.5px;fill:var(--muted)}
+.usage-chart .lbl-strong{fill:var(--ink);font-weight:600;font-size:13px}
+.usage-chart .ptitle{fill:var(--ink-2);font-weight:600;font-size:12px}
+.usage-tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font:500 12.5px/1.45 var(--sans);padding:7px 10px;border-radius:8px;white-space:nowrap;transform:translate(-50%,-100%);font-variant-numeric:tabular-nums;z-index:2}
+.usage-tip[hidden]{display:none}
+.usage-tip b{font-weight:600}
+.more .usage .src{font:500 12.5px/1.5 var(--sans);color:var(--muted);margin:0}
+.usage-tbl{font:500 13px var(--sans);color:var(--muted)}
+.item .usage-tbl summary,.item[open] .usage-tbl summary{display:block;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.usage-tbl .scroll{overflow-x:auto;margin-top:8px}
+.usage-tbl table{border-collapse:collapse;font-variant-numeric:tabular-nums}
+.usage-tbl th,.usage-tbl td{padding:3px 14px 3px 0;text-align:right;white-space:nowrap}
+.usage-tbl th:first-child,.usage-tbl td:first-child{text-align:left}
+.usage-tbl th{font-weight:600;color:var(--ink-2);border-bottom:1px solid var(--line)}
+@media (max-width:620px){.usage{padding:18px 14px 14px}.usage .stats{grid-template-columns:1fr 1fr 1fr}.usage .stat.hero{grid-column:1/-1}}
